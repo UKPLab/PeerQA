@@ -11,7 +11,7 @@ We present PeerQA, a real-world, scientific, document-level Question Answering (
 PeerQA supports three critical tasks for developing practical QA systems: Evidence retrieval, unanswerable question classification, and answer generation. 
 We provide a detailed analysis of the collected dataset and conduct experiments establishing baseline systems for all three tasks. Our experiments and analyses reveal the need for decontextualization in document-level retrieval, where we find that even simple decontextualization approaches consistently improve retrieval performance across architectures. On answer generation, PeerQA serves as a challenging benchmark for long-context modeling, as the papers have an average size of 12k tokens.
 
-# Contact
+## Contact
 Contact person: [Tim Baumgärtner](mailto:tim.baumgaertner@tu-darmstadt.de) 
 
 [UKP Lab](https://www.ukp.tu-darmstadt.de/) | [TU Darmstadt](https://www.tu-darmstadt.de/
@@ -20,9 +20,7 @@ Contact person: [Tim Baumgärtner](mailto:tim.baumgaertner@tu-darmstadt.de)
 Don't hesitate to send us an e-mail or report an issue, if something is broken (and it shouldn't be) or if you have further questions.
 
 
-## Getting Started
-
-### Setup
+## Setup
 To run the experiments, you need to install the following dependencies:
 - [GROBID 0.8](https://github.com/kermitt2/grobid/releases/tag/0.8.0)
 - Java 21 (for BM25 retrieval experiments with pyserini)
