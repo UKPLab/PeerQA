@@ -1,0 +1,30 @@
+# system files
+.DS_Store
+.vscode
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv*
+
+# models
+colbertv2.0
+
+# intermediate data files
+data/egu
+data/nlpeer
+data/openreview
+data/papers.jsonl
+data/qa.jsonl
+data/qa-augmented-answers.jsonl
+data/qa-unlabeled.jsonl
+data/peerqa-data-v*.zip
+
+# generations
+out/

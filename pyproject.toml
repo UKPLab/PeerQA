@@ -1,0 +1,58 @@
+[project]
+name = "peer-qa-camera-ready"
+version = "0.1.0"
+description = "PeerQA: A Scientific Question Answering Dataset from Peer Reviews"
+authors = [
+  {name = "Tim Baumgärtner", email = "tim.baumgaertner@tu-darmstadt.de"},
+  {name = "Ted Briscoe", email = "ted.briscoe@mbzuai.ac.ae"},
+  {name = "Iryna Gurevych", email = "iryna.gurevych@tu-darmstadt.de"},
+]
+maintainers = [
+  {name = "Tim Baumgärtner", email = "tim.baumgaertner@tu-darmstadt.de"}
+]
+license = {file = "LICENSE"}
+keywords = ["Peer Review", "Question Answering", "Scientific QA", "Dataset", "NLP", "Information Retrieval", "RAG", "Retrieval Augmented Generation"]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "datasets>=2.3.2",
+    "en-core-sci-sm",
+    "en-core-web-sm",
+    "grobid-client-python",
+    "intertext-graph",
+    "nlpeer",
+    "openai>=1.63.2",
+    "pandas>=2.1.0",
+    "pypdf2>=3.0.1",
+    "pyserini>=0.44.0",
+    "pytrec-eval==0.5",
+    "requests>=2.32.3",
+    "rouge-score==0.1.2",
+    "scikit-learn>=1.6.1",
+    "sentence-transformers>=2.7.0",
+    "simple-parsing>=0.1.7",
+    "tiktoken>=0.9.0",
+    "tqdm>=4.67.1",
+    "transformers<=4.47",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "isort>=6.0.0",
+    "jupyter>=1.1.1",
+]
+
+[tool.uv.sources]
+nlpeer = { git = "https://github.com/timbmg/nlpeer", rev = "fix-tei-xml-parser" }
+intertext-graph = { git = "https://github.com/UKPLab/intertext-graph.git" }
+grobid-client-python = { git = "https://github.com/kermitt2/grobid_client_python" }
+en-core-sci-sm = { url = "https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz" }
+en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz" }
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages]
+find = { include = ["peerqa"] } 
