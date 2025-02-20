@@ -1,7 +1,7 @@
 <div align="center">
 <h1>PeerQA: A Scientific Question Answering Dataset from Peer Reviews</h1>
 
-[![Arxiv](https://img.shields.io/badge/Arxiv-YYMM.NNNNN-red?style=flat-square&logo=arxiv&logoColor=white)](https://put-here-your-paper.com)
+[![Arxiv](https://img.shields.io/badge/Arxiv-2502.13668-red?style=flat-square&logo=arxiv&logoColor=white)](http://arxiv.org/abs/2502.13668)
 [![License](https://img.shields.io/github/license/UKPLab/ukp-project-template)](https://opensource.org/licenses/Apache-2.0)
 [![Python Versions](https://img.shields.io/badge/Python-3.10-blue.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 </div>
@@ -237,7 +237,15 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
 Please use the following citation:
 
 ```
-tbd
+@article{peerqa,
+      title={PeerQA: A Scientific Question Answering Dataset from Peer Reviews}, 
+      author={Tim Baumgärtner and Ted Briscoe and Iryna Gurevych},
+      year={2025},
+      eprint={2502.13668},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.13668}, 
+}
 ```
 
 ## Disclaimer
