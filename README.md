@@ -128,7 +128,7 @@ uv run retrieval_dense_cross_retrieval.py --query_model=facebook/contriever-msma
 ```
 2. Run the retrieval evaluation
 ```bash
-uv run retrieval_evalulate.py --query_model=facebook/contriever-msmarco --sim_fn=dot --granularity=sentences
+uv run retrieval_evaluate.py --query_model=facebook/contriever-msmarco --sim_fn=dot --granularity=sentences
 ```
 ### BM25 
 0. Make sure Java 21 is installed. This is required for pyserini.
