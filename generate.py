@@ -52,6 +52,10 @@ class Args:
         "llama-8B-instruct-32k",
         "llama-8B-instruct",
         "mistral-7B-instruct-v02",
+        "deepseek-r1-llama-8b-128k",
+        "deepseek-r1-qwen-7b-128k",
+        "deepseek-r1-qwen-14b-128k",
+        "deepseek-r1-qwen-32b-128k",
     ] = "llama-8B-instruct"
     context_setting: int | str = None
     vllm_bs: int = 0
@@ -92,7 +96,6 @@ def main(args: Args):
         gpu_memory_utilization = 1
         kwargs = {
             "enforce_eager": True,
-            "swap_space": 0,
             "tensor_parallel_size": 2,  # tested on 2xA100
             "distributed_executor_backend": "mp",
         }
@@ -100,7 +103,6 @@ def main(args: Args):
         model_path = "meta-llama/Meta-Llama-3-8B-Instruct"
         gpu_memory_utilization = 0.9
         max_model_len = 8192 * 4
-
     elif args.model == "llama-8B-instruct":
         model_path = "meta-llama/Meta-Llama-3-8B-Instruct"
         gpu_memory_utilization = 0.9
@@ -109,6 +111,27 @@ def main(args: Args):
         model_path = "mistralai/Mistral-7B-Instruct-v0.2"
         gpu_memory_utilization = 0.9
         max_model_len = 8192 * 4
+    elif args.model == "deepseek-r1-llama-8b-128k":
+        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai--DeepSeek-R1-Distill-Llama-8B"
+        # model_path = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
+        gpu_memory_utilization = 0.9
+        max_model_len = 131072
+    elif args.model == "deepseek-r1-qwen-7b-128k":
+        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai-DeepSeek-R1-Distill-Qwen-7B"
+        gpu_memory_utilization = 0.9
+        max_model_len = 131072
+    elif args.model == "deepseek-r1-qwen-14b-128k":
+        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai-DeepSeek-R1-Distill-Qwen-14B"
+        gpu_memory_utilization = 0.9
+        max_model_len = 131072
+    elif args.model == "deepseek-r1-qwen-32b-128k":
+        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai-DeepSeek-R1-Distill-Qwen-32B"
+        max_model_len = 131072 // 2 # has to be reduced to fit KV Cache
+        gpu_memory_utilization = 0.98
+        kwargs = {
+            "tensor_parallel_size": 2,  # tested on 2xA100
+            "distributed_executor_backend": "mp",
+        }
     else:
         raise ValueError(args.model)
 
@@ -227,6 +250,8 @@ def main(args: Args):
     logger.info(f"Writing generations to {out_file}")
     df_generations = pd.DataFrame(generations)
     df_generations.to_json(out_file, orient="records", lines=True)
+
+    logger.debug(f"Sample Generation:\n{df_generations.sample(1).to_json(indent=2)}")
 
 
 if __name__ == "__main__":

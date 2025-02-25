@@ -43,6 +43,10 @@ def inputs_from_prompts(
         # models without system prompt
         elif model in [
             "mistral-7B-instruct-v02",
+            "deepseek-r1-llama-8b-128k",
+            "deepseek-r1-qwen-7b-128k",
+            "deepseek-r1-qwen-14b-128k",
+            "deepseek-r1-qwen-32b-128k",
         ]:
             conversation = [
                 {
@@ -146,9 +150,8 @@ def make_prompts_rag(
 
     # Group by question_id and apply the function to get the top N paragraphs
     top_N_paragraphs = df_run.groupby("question_id").apply(fn, N=context_setting)
-
     top_N_paragraphs.reset_index(drop=True, inplace=True)
-    N = context_setting if isinstance(context_setting, int) else 10
+    
     prompts, ids = [], []
     for paper_id, document_ids, documents in paper_loader(granularity="paragraphs"):
         question_ids, questions, answerable = qa_loader.questions_un_answerable(
@@ -206,5 +209,17 @@ def make_prompts_rag(
 def process_outputs(outputs, ids):
     generations = []
     for _id, output in zip(ids, outputs):
-        generations.append({**_id, "generation": output.outputs[0].text})
+        kwargs = {}
+        generation = output.outputs[0].text
+        # check if any reasoning tokens are in the generation
+        if any(reasoning_token in generation for reasoning_token in ["</think>"]):
+
+            # check if deepseek-r1 reasoning tokens are in the generation
+            if any(reasoning_token in generation for reasoning_token in ["</think>"]):
+                # NOTE: this removes any text before the first <think> token
+                to_think = generation.index("</think>") + len("</think>")
+                reasoning = generation[: to_think]
+                generation = generation[to_think:].strip("\n")
+                kwargs = {"reasoning": reasoning}
+        generations.append({**_id, "generation": generation, **kwargs})
     return generations
