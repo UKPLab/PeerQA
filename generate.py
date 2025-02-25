@@ -54,6 +54,7 @@ class Args:
         "mistral-7B-instruct-v02",
     ] = "llama-8B-instruct"
     context_setting: int | str = None
+    vllm_bs: int = 0
 
     def __post_init__(self):
 
@@ -203,8 +204,24 @@ def main(args: Args):
         exp += f"-{args.context_setting}"
     logger.info(f"Running inference for {exp}")
     logger.info(f"Random input: {random.choice(inputs)}")
-    outputs = llm.generate(inputs, sampling_params)
-    generations = process_outputs(outputs, ids)
+    
+    # occasionally, the model runs out of memory when generating all inputs at once
+    # in this case, we can split the inputs into batches by setting vllm_bs > 0
+    if args.vllm_bs > 0:
+        generations = []
+        num_batches = len(inputs) // args.vllm_bs
+        if len(inputs) % args.vllm_bs > 0:
+            num_batches += 1
+        for i in range(0, num_batches):
+            logger.info(f"Batch {i+1}/{num_batches}")
+            batch_inputs = inputs[i * args.vllm_bs : (i + 1) * args.vllm_bs]
+            batch_ids = ids[i * args.vllm_bs : (i + 1) * args.vllm_bs]
+            outputs = llm.generate(batch_inputs, sampling_params)
+            _generations = process_outputs(outputs, batch_ids)
+            generations.extend(_generations)
+    else:
+        outputs = llm.generate(inputs, sampling_params)
+        generations = process_outputs(outputs, ids)
 
     out_file = f"{str(args.output_dir)}/generations-{exp}.jsonl"
     logger.info(f"Writing generations to {out_file}")
