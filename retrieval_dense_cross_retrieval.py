@@ -9,11 +9,10 @@ from typing import Literal, Union
 import numpy as np
 import simple_parsing
 from sentence_transformers import CrossEncoder, SentenceTransformer, util
-from tqdm.auto import tqdm
 from tqdm.contrib.logging import logging_redirect_tqdm
 
 from peerqa.data_loader import HydeLoader, PaperLoader, QuestionLoader
-from peerqa.dense_wrappers import DenseWrapper, HFBase, Splade
+from peerqa.dense_wrappers import SequenceClassification, Splade, HFBase
 from peerqa.utils import url_save_hash, url_save_str
 
 fileConfig("logging.ini")
@@ -24,6 +23,7 @@ logger = logging.getLogger(__name__)
 class Args:
     query_model: str
     document_model: str = None
+    model_cls: Literal["st", "cross", "hf", "splade", "sc"] = "st"
     output_dir: Path = field(default=Path("out"))
     qa_file: Path = field(default=Path("data/qa.jsonl"))
     papers_file: Path = field(default=Path("data/papers.jsonl"))
@@ -40,14 +40,16 @@ class Args:
 
 def init_model(model, pooling):
 
-    if model.startswith("sentence-transformers/"):
+    if args.model_cls == "st":
         model_cls = SentenceTransformer
-    elif model.startswith("cross-encoder"):
+    elif args.model_cls == "cross":
         model_cls = CrossEncoder
-    elif "splade" in model:
-        model_cls = partial(Splade, pooling=pooling)
-    else:
+    elif args.model_cls == "hf":
         model_cls = partial(HFBase, pooling=pooling)
+    elif args.model_cls == "splade":
+        model_cls = partial(Splade, pooling=pooling)
+    elif args.model_cls == "sc":
+        model_cls = SequenceClassification
 
     return model_cls(model)
 
@@ -155,7 +157,7 @@ def main(args: Args):
             or args.include_unanswerable
         ), list(filter(lambda qid: qid not in qrels.keys(), question_ids))
 
-        if isinstance(query_model, (SentenceTransformer, DenseWrapper)):
+        if isinstance(query_model, (SentenceTransformer, HFBase)):
             question_embeddings = query_model.encode(
                 questions, show_progress_bar=False, batch_size=args.batch_size
             )
@@ -174,7 +176,7 @@ def main(args: Args):
 
             scores = sim_fn(question_embeddings, document_embeddings)
 
-        elif isinstance(query_model, CrossEncoder):
+        elif isinstance(query_model, (CrossEncoder, SequenceClassification)):
             pairs = [[q, d] for q in questions for d in documents]
             scores = query_model.predict(
                 pairs, show_progress_bar=False, batch_size=args.batch_size

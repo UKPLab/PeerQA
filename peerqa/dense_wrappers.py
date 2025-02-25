@@ -5,11 +5,22 @@ from typing import List, Union
 import numpy as np
 import torch
 from tqdm.auto import tqdm
-from transformers import AutoModel, AutoModelForMaskedLM, AutoTokenizer
+from transformers import (
+    AutoModel,
+    AutoModelForMaskedLM,
+    AutoTokenizer,
+    AutoModelForSequenceClassification,
+)
 
 fileConfig("logging.ini")
 logger = logging.getLogger(__name__)
 
+def _batchify(x: list, batch_size: int):
+    num_batches = len(x) // batch_size
+    if len(x) % batch_size:
+        num_batches += 1
+    for i in range(num_batches):
+        yield x[i * batch_size : (i + 1) * batch_size]
 
 class DenseWrapper:
     "Wrapper providing base functions of `SentenceTransformers` with non-native model."
@@ -19,7 +30,7 @@ class DenseWrapper:
 
 
 class HFBase(DenseWrapper):
-    def __init__(self, model_name: str, pooling: str):
+    def __init__(self, model_name: str, pooling):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name, trust_remote_code=True)
         self.pooling = pooling
@@ -37,7 +48,7 @@ class HFBase(DenseWrapper):
     ):
         embeddings = []
         for batch_sentences in tqdm(
-            self._batchify(sentences, batch_size),
+            _batchify(sentences, batch_size),
             disable=not show_progress_bar,
             ncols=80,
         ):
@@ -88,14 +99,6 @@ class HFBase(DenseWrapper):
         return embeddings
 
     @staticmethod
-    def _batchify(x: list, batch_size: int):
-        num_batches = len(x) // batch_size
-        if len(x) % batch_size:
-            num_batches += 1
-        for i in range(num_batches):
-            yield x[i * batch_size : (i + 1) * batch_size]
-
-    @staticmethod
     def _mean_pooling(token_embeddings, mask):
         token_embeddings = token_embeddings.masked_fill(~mask[..., None].bool(), 0.0)
         sentence_embeddings = token_embeddings.sum(dim=1) / mask.sum(dim=1)[..., None]
@@ -112,3 +115,49 @@ class Splade(HFBase):
             logger.info("Loading Model to GPU.")
             self.model.to("cuda")
         self.model.eval()
+
+
+class SequenceClassification:
+    def __init__(self, model_name: str):
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModelForSequenceClassification.from_pretrained(model_name, trust_remote_code=True)
+
+        if torch.cuda.is_available():
+            logger.info("Loading Model to GPU.")
+            self.model.to("cuda")
+        self.model.eval()
+
+    def predict(
+        self,
+        pairs: list[list[str, str]],
+        batch_size: int,
+        show_progress_bar: bool = False,
+    ) -> np.ndarray:
+        # Implement the same CrossEncoder.predict method
+        scores = []
+        for batch_pairs in tqdm(
+            _batchify(pairs, batch_size),
+            disable=not show_progress_bar,
+            ncols=80,
+        ):
+            inputs = self.tokenizer(
+                batch_pairs, padding=True, truncation=True, return_tensors="pt", max_length=512
+            )
+
+            if torch.cuda.is_available():
+                inputs = {k: v.to("cuda") for k, v in inputs.items()}
+
+            with torch.no_grad():
+                batch_scores = (
+                    self.model(**inputs, return_dict=True)
+                    .logits.view(
+                        -1,
+                    )
+                    .float()
+                    .cpu()
+                    .numpy()
+                )
+            scores.append(batch_scores)
+        scores = np.concatenate(scores)
+
+        return scores
