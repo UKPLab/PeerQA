@@ -2352,7 +2352,7 @@ requires-dist = [
     { name = "simple-parsing", specifier = ">=0.1.7" },
     { name = "tiktoken", specifier = ">=0.9.0" },
     { name = "tqdm", specifier = ">=4.67.1" },
-    { name = "transformers", specifier = "<=4.47" },
+    { name = "transformers", specifier = "==4.48.3" },
 ]
 
 [package.metadata.requires-dev]
@@ -3881,7 +3881,7 @@ wheels = [
 
 [[package]]
 name = "transformers"
-version = "4.47.0"
+version = "4.48.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "filelock" },
@@ -3895,9 +3895,9 @@ dependencies = [
     { name = "tokenizers" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b1/5a/0ecfde3264bed0579c37f249e04e15f3c1451ba864d78bbe390177664cac/transformers-4.47.0.tar.gz", hash = "sha256:f8ead7a5a4f6937bb507e66508e5e002dc5930f7b6122a9259c37b099d0f3b19", size = 8693668 }
+sdist = { url = "https://files.pythonhosted.org/packages/e3/82/cebeb7af5e64440f1638f18c4ed0f89156d0eeaa6290d98da8ca93ac3872/transformers-4.48.3.tar.gz", hash = "sha256:a5e8f1e9a6430aa78215836be70cecd3f872d99eeda300f41ad6cc841724afdb", size = 8373458 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/a7/7eedcf6a359e1e1eff3bc204ad022485aa5d88c08e1e3e0e0aee8a2e2235/transformers-4.47.0-py3-none-any.whl", hash = "sha256:a8e1bafdaae69abdda3cad638fe392e37c86d2ce0ecfcae11d60abb8f949ff4d", size = 10133426 },
+    { url = "https://files.pythonhosted.org/packages/b6/1a/efeecb8d83705f2f4beac98d46f2148c95ecd7babfb31b5c0f1e7017e83d/transformers-4.48.3-py3-none-any.whl", hash = "sha256:78697f990f5ef350c23b46bf86d5081ce96b49479ab180b2de7687267de8fd36", size = 9669412 },
 ]
 
 [[package]]
