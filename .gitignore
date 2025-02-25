@@ -28,3 +28,5 @@ data/peerqa-data-v*.zip
 
 # generations
 out/
+
+slurm/*
