@@ -13,7 +13,7 @@ We provide a detailed analysis of the collected dataset and conduct experiments 
 
 ## News
 
-✨ _2025/02/25_ **New DeepSeek-R1 & Cross-Encoder Results** - We add results for the distilled DeepSeek-R1 models: Llama 8B, Qwen 7B, Qwen 14B and Qwen 32B for the answerability, and answer generation tasks. We furhter evaluate a new set of Cross-Encoder Reranker models. See [Additional Results](#additional-results) for more details.
+✨ _2025/02/25_ **New DeepSeek-R1 & Cross-Encoder Results** - We add results for the distilled DeepSeek-R1 models: Llama 8B, Qwen 7B, Qwen 14B and Qwen 32B for the answerability, and answer generation tasks. We furhter evaluate a new set of Dene and Cross-Encoder Reranker models. See [Additional Results](#additional-results) for more details.
 
 ✨ _2025/02/19_ **PeerQA Dataset Released** - The PeerQA preprint is now available on [Arxiv](http://arxiv.org/abs/2502.13668), as well as the code and data on [GitHub](https://github.com/UKPLab/peerqa).
 
@@ -242,7 +242,28 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
     </thead>
     <tbody>
       <tr style="vertical-align: top">
-            <td>Alibaba-NLP/gte-large-en-v1.5</td><td>Dense</td><td>0.3343</td><td>0.3525</td><td>0.2892</td><td>0.3084</td><td>0.5363</td><td>0.5360</td><td>0.3033</td><td>0.3332</td>
+          <td>Alibaba-NLP/gte-large-en-v1.5</td>
+          <td>Dense</td>
+          <td>0.3343</td>
+          <td>0.3525</td>
+          <td>0.2892</td>
+          <td>0.3084</td>
+          <td>0.5363</td>
+          <td>0.5360</td>
+          <td>0.3033</td>
+          <td>0.3332</td>
+      </tr>
+      <tr style="vertical-align: top">
+          <td>Alibaba-NLP/gte-modernbert-base</td>
+          <td>Dense</td>
+          <td>0.3175</td>
+          <td>0.3751</td>
+          <td>0.2885</td>
+          <td>0.2982</td>
+          <td>0.5385</td>
+          <td>0.5376</td>
+          <td>0.2951</td>
+          <td>0.3183</td>
       </tr>
       <tr style="vertical-align: top">
         <td>BAAI/bge-reranker-large</td>
