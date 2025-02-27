@@ -328,6 +328,8 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
     </tbody>
 </table>
 
+The upperbound for Recall@10 on the paragraph level is 0.995 and on the sentence level is 0.9793.
+
 ### Answerability
 All RAG results obtained using SPLADEv3 retrieval results.
 <table>
