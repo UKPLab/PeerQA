@@ -95,8 +95,7 @@ def main(args: Args):
         )
         gpu_memory_utilization = 1
         kwargs = {
-            "enforce_eager": True,
-            "tensor_parallel_size": 2,  # tested on 2xA100
+            "tensor_parallel_size": 2,
             "distributed_executor_backend": "mp",
         }
     elif args.model == "llama-8B-instruct-32k":
@@ -112,20 +111,19 @@ def main(args: Args):
         gpu_memory_utilization = 0.9
         max_model_len = 8192 * 4
     elif args.model == "deepseek-r1-llama-8b-128k":
-        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai--DeepSeek-R1-Distill-Llama-8B"
-        # model_path = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
+        model_path = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
         gpu_memory_utilization = 0.9
         max_model_len = 131072
     elif args.model == "deepseek-r1-qwen-7b-128k":
-        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai-DeepSeek-R1-Distill-Qwen-7B"
+        model_path = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
         gpu_memory_utilization = 0.9
         max_model_len = 131072
     elif args.model == "deepseek-r1-qwen-14b-128k":
-        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai-DeepSeek-R1-Distill-Qwen-14B"
+        model_path = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
         gpu_memory_utilization = 0.9
         max_model_len = 131072
     elif args.model == "deepseek-r1-qwen-32b-128k":
-        model_path = "/storage/ukp/shared/shared_model_weights/models--deepseek-ai-DeepSeek-R1-Distill-Qwen-32B"
+        model_path = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
         max_model_len = 131072 // 2 # has to be reduced to fit KV Cache
         gpu_memory_utilization = 0.98
         kwargs = {
