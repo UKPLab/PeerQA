@@ -84,6 +84,9 @@ class PaperLoader:
         title = title[0]
         return title
 
+    def has_paper_id(self, paper_id: str) -> bool:
+        return paper_id in self.df.paper_id.unique()
+
 
 class QuestionLoader:
     def __init__(self, qa_file: str):
