@@ -117,6 +117,7 @@ def main(args: Args):
         paper_id = str(Path(*paper_pdf_file.parts[1:]).parent)
         if paper_loader.has_paper_id(paper_id) and not args.override:
             logger.info(f"Skipping {paper_pdf_file}. Already present in {args.papers_file}.")
+            continue
 
         # use GROBID to convert the PDF to TEI
         tei_path = base_path / "paper.tei.xml"
@@ -145,8 +146,10 @@ def main(args: Args):
             with open(itg_path, "w") as f:
                 f.write(itg.to_json())
 
-        # convert the .itg.json to a list of sentences including the paragraph and sentence index
+        # convert the .itg.json to a list of sentences including the paragraph and 
+        # sentence index
         content_path = base_path / "paper.content.jsonl"
+        paper_content_files.append(content_path)
         if args.override or not content_path.exists():
             with open(itg_path) as fp:
                 itg = json.load(fp)
@@ -261,12 +264,12 @@ def main(args: Args):
                     pd.DataFrame(content).to_json(
                         file, lines=True, force_ascii=False, orient="records"
                     )
-                paper_content_files.append(content_path)
 
     if not paper_content_files:
         logger.info("No new papers to process.")
         return
 
+    logger.info(f"Adding {len(paper_content_files)} paper content files.")
     df = []
     for paper_content_file in paper_content_files:
         _df = pd.read_json(paper_content_file, lines=True)
