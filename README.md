@@ -2,8 +2,9 @@
 <h1>PeerQA: A Scientific Question Answering Dataset from Peer Reviews</h1>
 
 [![Arxiv](https://img.shields.io/badge/Arxiv-2502.13668-red?style=flat-square&logo=arxiv&logoColor=white)](http://arxiv.org/abs/2502.13668)
-[![License](https://img.shields.io/github/license/UKPLab/ukp-project-template)](https://opensource.org/licenses/Apache-2.0)
-[![Python Versions](https://img.shields.io/badge/Python-3.10-blue.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![Arxiv](https://img.shields.io/badge/Dataset-UKPLab/PeerQA-blue?style=flat-square&logo=huggingface&logoColor=yellow)](https://huggingface.co/datasets/UKPLab/PeerQA)
+[![Arxiv](https://img.shields.io/badge/License-Apache--2.0-green?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
+[![Python Versions](https://img.shields.io/badge/Python-3.10-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 </div>
 
 <img src="./peer-qa-overview-with-note.png" align="right" width="275" style="padding: 10px">
@@ -12,6 +13,8 @@ PeerQA supports three critical tasks for developing practical QA systems: Eviden
 We provide a detailed analysis of the collected dataset and conduct experiments establishing baseline systems for all three tasks. Our experiments and analyses reveal the need for decontextualization in document-level retrieval, where we find that even simple decontextualization approaches consistently improve retrieval performance across architectures. On answer generation, PeerQA serves as a challenging benchmark for long-context modeling, as the papers have an average size of 12k tokens.
 
 ## News
+
+✨ _2025/03/04_ **HuggingFace Datasets** - The PeerQA dataset is now available on HuggingFace Datasets! Find detailed instructions on https://huggingface.co/datasets/UKPLab/PeerQA.
 
 ✨ _2025/02/25_ **New DeepSeek-R1 & Cross-Encoder Results** - We add results for the distilled DeepSeek-R1 models: Llama 8B, Qwen 7B, Qwen 14B and Qwen 32B for the answerability, and answer generation tasks. We furhter evaluate a new set of Dene and Cross-Encoder Reranker models. See [Additional Results](#additional-results) for more details.
 
