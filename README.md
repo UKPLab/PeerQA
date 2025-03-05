@@ -25,10 +25,7 @@ We provide a detailed analysis of the collected dataset and conduct experiments 
 
 ## Setup
 To run the experiments, you need to install the following dependencies:
-- [GROBID 0.8](https://github.com/kermitt2/grobid/releases/tag/0.8.0)
-- Java 21 (for BM25 retrieval experiments with pyserini)
 - [uv](https://docs.astral.sh/uv/)
-
 To set up the environment, you can use the following commands:
 ```bash
 # download python version with uv
@@ -40,6 +37,14 @@ source .venv/bin/activate
 # install the required python packages
 uv pip install .
 ```
+
+To process the data locally, you need to run GROBID 0.8.0. By default, the preprocessing script will use GROBID hosted on HuggingFace's Spaces (https://timbmg-peerqa-grobid-0-8-0.hf.space).
+- [GROBID 0.8](https://github.com/kermitt2/grobid/releases/tag/0.8.0)
+
+For the BM25 experiments with Pyserini you need:
+- Java 21
+
+
 
 ## Data & Preprocessing
 This section describes how to download the data from the different sources and how to preprocess it for the experiments.
@@ -56,11 +61,11 @@ To adhere to the licenses of the papers, we cannot provide the papers directly. 
 ```bash
 uv run download_openreview.py
 ```
-2. Extract the text from the PDFs to add OpenReview PDF texts to `data/papers.jsonl`. The text is extracted from the PDF with GROBID 0.8.0. By default the script will use the GROBID server hosted on HuggingFace spaces at https://timbmg-peerqa-grobid-0-8-0.hf.space. However, you can also run the GROBID server locally via docker: `docker run -p 8070:8070 lfoppiano/grobid:0.8.0`. To use the local server, set the `--grobid_url` argument to `http://localhost:8070`. Otherwise the script will use the HuggingFace server. To now extract the text from the PDFs, run:
+2. Extract the text from the PDFs to add OpenReview PDF texts to `data/papers.jsonl`. The text is extracted from the PDF with GROBID 0.8.0. By default the script will use the GROBID server hosted on HuggingFace spaces at https://timbmg-peerqa-grobid-0-8-0.hf.space. However, you can also run the GROBID server locally via docker: `docker run -p 8070:8070 lfoppiano/grobid:0.8.0`. To use the local server, set the `--grobid_url` argument to `http://localhost:8070`. Otherwise, the script will use the HuggingFace server. To now extract the text from the PDFs, run:
 ```bash
 uv run extract_text_from_pdf.py
 ```
-Now the data is ready for the experiments.
+Now, the data is ready for the experiments.
 
 
 ### Data
@@ -106,7 +111,7 @@ uv run retrieval_create_qrels.py
 
 The following table provides an overview of the models used for the retrieval experiments along with their respective configurations.
 
-To reproduce the decontextualization experiments, add a `--template` argument to the scripts. In the paper we used `--template="Title: {title} Paragraph: {content}"` for paragraph chunks (i.e. `--granularity=parapgraphs`) and `--template="Title: {title} Sentence: {content}"` for sentence chunks (i.e. `--granularity=sentences`).
+To reproduce the decontextualization experiments, add a `--template` argument to the scripts. In the paper, we used `--template="Title: {title} Paragraph: {content}"` for paragraph chunks (i.e. `--granularity=parapgraphs`) and `--template="Title: {title} Sentence: {content}"` for sentence chunks (i.e. `--granularity=sentences`).
 
 | Query Model | Document Model | Model Class | Similarity Function | Pooling |
 |---|---|---|---|---|
@@ -127,7 +132,7 @@ uv run retrieval_evaluate.py --query_model=facebook/contriever-msmarco --sim_fn=
 ```
 ### BM25 
 0. Make sure Java 21 is installed. This is required for pyserini.
-1. Run the data preprocessing, to convert the data to pyserini format.
+1. Run the data preprocessing to convert the data to pyserini format.
 ```bash
 uv run retrieval_pyserini_preprocess.py --granularity=sentences
 ```
@@ -146,7 +151,7 @@ uv run retrieval_evalulate.py --query_model=bm25 --sim_fn=sparse --granularity=s
 ### ColBERT
 Download ColBERTv2 checkpoint from https://downloads.cs.stanford.edu/nlp/data/colbert/colbertv2/colbertv2.0.tar.gz
 
-1. Preprocess the data, to convert it to the ColBERT format
+1. Preprocess the data to convert it to the ColBERT format
 ```bash
 uv run retrieval_colbert_preprocess.py --granularity=sentences
 ```
@@ -183,7 +188,7 @@ uv run generate.py --model=llama-8B-instruct --prompt_selection=answerability-ra
 ```bash
 uv run generate.py --model=llama-8B-instruct --prompt_selection=answerability-rag --context_setting=gold 
 ```
-2. Run the answerability evaluation, and set the `--generation_file` argument to the path of the generated answers from the previous step (here we use the rag setup with gold paragraphs as an example).
+2. Run the answerability evaluation and set the `--generation_file` argument to the path of the generated answers from the previous step (here, we use the rag setup with gold paragraphs as an example).
 ```bash
 uv run generations_evaluate_answerability.py --generation_file=out/generations-llama-8B-instruct-8k-answerability-rag-gold.jsonl
 ```
