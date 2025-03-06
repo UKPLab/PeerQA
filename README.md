@@ -2,8 +2,8 @@
 <h1>PeerQA: A Scientific Question Answering Dataset from Peer Reviews</h1>
 
 [![Arxiv](https://img.shields.io/badge/Arxiv-2502.13668-red?style=flat-square&logo=arxiv&logoColor=white)](http://arxiv.org/abs/2502.13668)
-[![Arxiv](https://img.shields.io/badge/Dataset-UKPLab/PeerQA-blue?style=flat-square&logo=huggingface&logoColor=yellow)](https://huggingface.co/datasets/UKPLab/PeerQA)
-[![Arxiv](https://img.shields.io/badge/License-Apache--2.0-green?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
+[![HuggingFace](https://img.shields.io/badge/Dataset-UKPLab/PeerQA-blue?style=flat-square&logo=huggingface&logoColor=yellow)](https://huggingface.co/datasets/UKPLab/PeerQA)
+[![License](https://img.shields.io/badge/License-Apache--2.0-green?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 [![Python Versions](https://img.shields.io/badge/Python-3.10-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 </div>
 
