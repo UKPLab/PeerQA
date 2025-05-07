@@ -14,7 +14,7 @@ We provide a detailed analysis of the collected dataset and conduct experiments 
 
 ## News
 
-✨ _2025/04/24_ **Outstanding Paper at NAACL** - PeerQA won the [Outstanding Paper Award](https://2025.naacl.org/blog/best-papers) at NAACL 2025!
+✨ _2025/04/24_ **Outstanding Paper at NAACL** - PeerQA won the [Outstanding Paper Award](https://2025.naacl.org/blog/best-papers/#outstanding-papers) at NAACL 2025!
 
 ✨ _2025/03/04_ **HuggingFace Datasets** - The PeerQA dataset is now available on HuggingFace Datasets! Find detailed instructions on https://huggingface.co/datasets/UKPLab/PeerQA.
 
