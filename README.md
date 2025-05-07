@@ -14,6 +14,8 @@ We provide a detailed analysis of the collected dataset and conduct experiments 
 
 ## News
 
+✨ _2025/04/24_ **Outstanding Paper at NAACL** - PeerQA won the [Outstanding Paper Award](https://2025.naacl.org/blog/best-papers) at NAACL 2025!
+
 ✨ _2025/03/04_ **HuggingFace Datasets** - The PeerQA dataset is now available on HuggingFace Datasets! Find detailed instructions on https://huggingface.co/datasets/UKPLab/PeerQA.
 
 ✨ _2025/02/25_ **New DeepSeek-R1 & Cross-Encoder Results** - We add results for the distilled DeepSeek-R1 models: Llama 8B, Qwen 7B, Qwen 14B and Qwen 32B for the answerability, and answer generation tasks. We furhter evaluate a new set of Dene and Cross-Encoder Reranker models. See [Additional Results](#additional-results) for more details.
