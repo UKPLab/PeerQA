@@ -943,14 +943,21 @@ All RAG results obtained using SPLADEv3 retrieval results.
 Please use the following citation:
 
 ```
-@article{peerqa,
-      title={PeerQA: A Scientific Question Answering Dataset from Peer Reviews}, 
-      author={Tim Baumgärtner and Ted Briscoe and Iryna Gurevych},
-      year={2025},
-      eprint={2502.13668},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2502.13668}
+@inproceedings{baumgartner-etal-2025-peerqa,
+    title = "{P}eer{QA}: A Scientific Question Answering Dataset from Peer Reviews",
+    author = {Baumg{\"a}rtner, Tim  and
+      Briscoe, Ted  and
+      Gurevych, Iryna},
+    editor = "Chiruzzo, Luis  and
+      Ritter, Alan  and
+      Wang, Lu",
+    booktitle = "Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)",
+    month = apr,
+    year = "2025",
+    address = "Albuquerque, New Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.naacl-long.22/",
+    pages = "508--544"
 }
 ```
 
