@@ -42,9 +42,14 @@ def main(args):
                     # Answer evidence that has no match in the extracted text
                     continue
 
-                pidx, sidx = papers_df[
-                    (papers_df.paper_id == qa.paper_id) & (papers_df.idx == idx)
-                ][["pidx", "sidx"]].values[0]
+                try:
+                    pidx, sidx = papers_df[
+                        (papers_df.paper_id == qa.paper_id) & (papers_df.idx == idx)
+                    ][["pidx", "sidx"]].values[0]
+                except Exception as e:
+                    logger.error(f"Error: {e}")
+                    logger.error(f"Question ID: {qidx}, Paper ID: {qa.paper_id}, idx: {idx}")
+                    raise e
                 paragraph_qrels[qidx][str(pidx)] = 1
                 sentence_qrels[qidx][f"{pidx}/{sidx}"] = 1
 

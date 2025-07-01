@@ -45,6 +45,7 @@ class HFBase(DenseWrapper):
         sentences: Union[str, List[str]],
         batch_size: int = 32,
         show_progress_bar: bool = None,
+        **kwargs,
     ):
         embeddings = []
         for batch_sentences in tqdm(

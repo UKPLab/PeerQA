@@ -36,6 +36,8 @@ class Args:
     hyde_file: Path = None
     hyde_add_question_embeddings_to_average: bool = True
     include_unanswerable: bool = False
+    query_prompt_name: str = None
+    passage_prompt_name: str = None
 
 
 def init_model(model, pooling):
@@ -159,7 +161,7 @@ def main(args: Args):
 
         if isinstance(query_model, (SentenceTransformer, HFBase)):
             question_embeddings = query_model.encode(
-                questions, show_progress_bar=False, batch_size=args.batch_size
+                questions, show_progress_bar=False, batch_size=args.batch_size, prompt_name=args.query_prompt_name
             )
             if args.use_hyde:
                 question_embeddings = process_hyde(
