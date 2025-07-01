@@ -28,12 +28,9 @@ We provide a detailed analysis of the collected dataset and conduct experiments 
 ## Setup
 
 To run the experiments, you need to install the following dependencies:
-<<<<<<< HEAD
-=======
 
 - [GROBID 0.8](https://github.com/kermitt2/grobid/releases/tag/0.8.0)
 - Java 21 (for BM25 retrieval experiments with pyserini)
->>>>>>> 5483711 (.)
 - [uv](https://docs.astral.sh/uv/)
 To set up the environment, you can use the following commands:
 
