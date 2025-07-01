@@ -19,7 +19,7 @@ We provide a detailed analysis of the collected dataset and conduct experiments 
 
 ✨ _2025/03/04_ **HuggingFace Datasets** - The PeerQA dataset is now available on HuggingFace Datasets! Find detailed instructions on https://huggingface.co/datasets/UKPLab/PeerQA.
 
-✨ _2025/02/25_ **New DeepSeek-R1 & Cross-Encoder Results** - We add results for the distilled DeepSeek-R1 models: Llama 8B, Qwen 7B, Qwen 14B and Qwen 32B for the answerability, and answer generation tasks. We furhter evaluate a new set of Dene and Cross-Encoder Reranker models. See [Additional Results](#additional-results) for more details.
+✨ _2025/02/25_ **New DeepSeek-R1 & Cross-Encoder Results** - We add results for the distilled DeepSeek-R1 models: Llama 8B, Qwen 7B, Qwen 14B and Qwen 32B for the answerability, and answer generation tasks. We furhter evaluate a new set of Dense and Cross-Encoder Reranker models. See [Additional Results](#additional-results) for more details.
 
 ✨ _2025/02/19_ **PeerQA Dataset Released** - The PeerQA preprint is now available on [Arxiv](http://arxiv.org/abs/2502.13668), as well as the code and data on [GitHub](https://github.com/UKPLab/peerqa).
 
