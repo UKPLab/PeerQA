@@ -2,7 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = [
 #     "prometheus-eval",
-#     "vllm==0.4.2",
+#     "simple-parsing",
+#     "pandas",
+#     "tqdm",
+#     "setuptools",
+#     "vllm==0.9.1",
 # ]
 # ///
 import logging
