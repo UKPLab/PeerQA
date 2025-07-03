@@ -81,10 +81,13 @@ def _answer_evidence_concat_paragraphs(paper_df, paper_id, answer_evidence_mappe
 def main(args: Args):
 
     out_file = args.output_dir / f"metrics-{args.generation_file.name}"
+    logger.info(f"{out_file=}.")
+
     if out_file.exists() and not args.override and not args.extend:
         logger.info(
             f"{out_file} exists. Skipping, because `override=False` and `extend=False`."
         )
+        return
     elif out_file.exists() and args.extend:
         df_computed = pd.read_json(out_file, lines=True)
         already_computed_metrics = list(df_computed.columns)
