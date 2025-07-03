@@ -704,6 +704,43 @@ All RAG results obtained using SPLADEv3 retrieval results.
             <td>0.73</td>
             <td>0.60</td>
         </tr>
+        <tr>
+            <td rowspan=3>Gemma-3-27b-it-128k</td>
+            <td>Gold</td>
+            <td>1.00</td>
+            <td>0.77</td>
+            <td>0.87</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>0.77</td>
+            <td>0.87</td>
+            <td>0.44</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>0.81</td>
+            <td>0.78</td>
+            <td>0.79</td>
+            <td>0.33</td>
+            <td>0.38</td>
+            <td>0.35</td>
+            <td>0.69</td>
+            <td>0.69</td>
+            <td>0.57</td>
+        </tr>
+        <tr>
+            <td>Full-Text</td>
+            <td>0.79</td>
+            <td>0.81</td>
+            <td>0.80</td>
+            <td>0.29</td>
+            <td>0.27</td>
+            <td>0.28</td>
+            <td>0.68</td>
+            <td>0.68</td>
+            <td>0.54</td>
+        </tr>
     </tbody>
 </table>
 
