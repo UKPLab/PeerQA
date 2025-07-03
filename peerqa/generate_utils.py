@@ -32,6 +32,7 @@ def inputs_from_prompts(
             "gpt-35-turbo-0613-16k",
             "gpt-4o-2024-08-06",
             "gpt-4o-mini-2024-07-18",
+            "llama-3.3-70b-it-128k",
         ]:
             conversation = [
                 {
@@ -47,6 +48,8 @@ def inputs_from_prompts(
             "deepseek-r1-qwen-7b-128k",
             "deepseek-r1-qwen-14b-128k",
             "deepseek-r1-qwen-32b-128k",
+            "deepseek-r1-llama-70b-128k",
+            "gemma-3-27b-it-128k",
         ]:
             conversation = [
                 {
