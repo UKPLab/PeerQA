@@ -17,6 +17,7 @@ from typing import Literal
 
 import pandas as pd
 import simple_parsing
+import torch
 from tqdm.contrib.logging import logging_redirect_tqdm
 from vllm import LLM, SamplingParams
 
@@ -56,6 +57,9 @@ class Args:
         "deepseek-r1-qwen-7b-128k",
         "deepseek-r1-qwen-14b-128k",
         "deepseek-r1-qwen-32b-128k",
+        "deepseek-r1-llama-70b-128k",
+        "gemma-3-27b-it-128k",
+        "llama-3.3-70b-it-128k",
     ] = "llama-8B-instruct"
     context_setting: int | str = None
     vllm_bs: int = 0
@@ -88,6 +92,7 @@ def main(args: Args):
 
     # load the model
     kwargs = {}
+    dtype = "float16"  # default dtype for vLLM
     if args.model == "command-r-v01":
         model_path = "CohereForAI/c4ai-command-r-v01"
         max_model_len = (
@@ -130,12 +135,37 @@ def main(args: Args):
             "tensor_parallel_size": 2,  # tested on 2xA100
             "distributed_executor_backend": "mp",
         }
+    elif args.model == "deepseek-r1-llama-70b-128k":
+        model_path = "deepseek-ai/DeepSeek-R1-Distill-Qwen-70B"
+        max_model_len = 131072 // 2 # has to be reduced to fit KV Cache
+        gpu_memory_utilization = 0.95
+        kwargs = {
+            "tensor_parallel_size": torch.cuda.device_count(),
+            "distributed_executor_backend": "mp",
+        }
+    elif args.model == "gemma-3-27b-it-128k":
+        model_path = "google/gemma-3-27b-it"
+        max_model_len = 131072 // 2 # has to be reduced to fit KV Cache
+        gpu_memory_utilization = 0.9
+        dtype="bfloat16" # Value error, The model type 'gemma3' does not support float16. Reason: Numerical instability. Please use bfloat16 or float32 instead.
+        kwargs = {
+            "tensor_parallel_size": torch.cuda.device_count(),
+            "distributed_executor_backend": "mp",
+        }
+    elif args.model == "llama-3.3-70b-it-128k":
+        model_path = "meta-llama/Llama-3.3-70B-Instruct"
+        max_model_len = 131072 // 2 # has to be reduced to fit KV Cache
+        gpu_memory_utilization = 0.95
+        kwargs = {
+            "tensor_parallel_size": torch.cuda.device_count(),
+            "distributed_executor_backend": "mp",
+        }
     else:
         raise ValueError(args.model)
 
     llm = LLM(
         model=model_path,
-        dtype="float16",
+        dtype=dtype,
         max_model_len=max_model_len,
         gpu_memory_utilization=gpu_memory_utilization,
         **kwargs,
