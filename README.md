@@ -559,6 +559,79 @@ All RAG results obtained using SPLADEv3 retrieval results.
             <td>0.45</td>
         </tr>
     <tr>
+            <td rowspan=6>DeepSeek-R1-Qwen3-8B-128k</td>
+            <td>Gold</td>
+            <td>1.00</td>
+            <td>0.60</td>
+            <td>0.75</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>0.60</td>
+            <td>0.75</td>
+            <td>0.38</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>0.86</td>
+            <td>0.68</td>
+            <td>0.76</td>
+            <td>0.36</td>
+            <td>0.62</td>
+            <td>0.46</td>
+            <td>0.66</td>
+            <td>0.69</td>
+            <td>0.61</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>0.83</td>
+            <td>0.71</td>
+            <td>0.76</td>
+            <td>0.33</td>
+            <td>0.49</td>
+            <td>0.39</td>
+            <td>0.66</td>
+            <td>0.68</td>
+            <td>0.58</td>
+        </tr>
+        <tr>
+            <td>50</td>
+            <td>0.83</td>
+            <td>0.75</td>
+            <td>0.79</td>
+            <td>0.36</td>
+            <td>0.49</td>
+            <td>0.42</td>
+            <td>0.69</td>
+            <td>0.70</td>
+            <td>0.60</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>0.84</td>
+            <td>0.78</td>
+            <td>0.81</td>
+            <td>0.40</td>
+            <td>0.50</td>
+            <td>0.44</td>
+            <td>0.72</td>
+            <td>0.73</td>
+            <td>0.63</td>
+        </tr>
+        <tr>
+            <td>Full-Text</td>
+            <td>0.85</td>
+            <td>0.76</td>
+            <td>0.80</td>
+            <td>0.39</td>
+            <td>0.54</td>
+            <td>0.45</td>
+            <td>0.71</td>
+            <td>0.72</td>
+            <td>0.63</td>
+        </tr>
+    <tr>
             <td rowspan=6>DeepSeek-R1-Qwen-14B-128k</td>
             <td>Gold</td>
             <td>1.00</td>
@@ -905,6 +978,73 @@ All RAG results obtained using SPLADEv3 retrieval results.
          <td>3.5265</td>
          <td>3.7479</td>
       </tr>
+      <tr>
+      <td rowspan=6>Deepseek-R1-Qwen3-8B-128k</td>
+      <td>Gold</td>
+      <td>0.1734</td>
+      <td>0.2141</td>
+      <td>0.2087</td>
+      <td>0.5702</td>
+      <td>0.1337</td>
+      <td>0.2451</td>
+      <td>3.4857</td>
+      <td>3.4566</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>0.1493</td>
+      <td>0.1856</td>
+      <td>0.1918</td>
+      <td>0.3846</td>
+      <td>0.0944</td>
+      <td>0.1790</td>
+      <td>3.3959</td>
+      <td>3.5238</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>0.1542</td>
+      <td>0.1887</td>
+      <td>0.2032</td>
+      <td>0.3787</td>
+      <td>0.0890</td>
+      <td>0.1649</td>
+      <td>3.5837</td>
+      <td>3.5574</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>0.1530</td>
+      <td>0.1955</td>
+      <td>0.2039</td>
+      <td>0.3766</td>
+      <td>0.0811</td>
+      <td>0.1721</td>
+      <td>3.6408</td>
+      <td>3.4874</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>0.1555</td>
+      <td>0.1942</td>
+      <td>0.2008</td>
+      <td>0.3813</td>
+      <td>0.0885</td>
+      <td>0.1678</td>
+      <td>3.6694</td>
+      <td>3.5434</td>
+    </tr>
+    <tr>
+      <td>Full Text</td>
+      <td>0.1522</td>
+      <td>0.1889</td>
+      <td>0.1977</td>
+      <td>0.3345</td>
+      <td>0.0738</td>
+      <td>0.1375</td>
+      <td>3.6980</td>
+      <td>3.6190</td>
+    </tr>
       <tr>
          <td rowspan=6>DeepSeek-R1-Qwen-14B-128k</td>
          <td>Gold</td>

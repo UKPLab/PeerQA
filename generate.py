@@ -57,6 +57,7 @@ class Args:
         "deepseek-r1-qwen-7b-128k",
         "deepseek-r1-qwen-14b-128k",
         "deepseek-r1-qwen-32b-128k",
+        "deepseek-r1-qwen3-8b-128k",
         "deepseek-r1-llama-70b-128k",
         "gemma-3-27b-it-128k",
         "llama-3.3-70b-it-128k",
@@ -120,6 +121,10 @@ def main(args: Args):
         gpu_memory_utilization = 0.9
         max_model_len = 131072
     elif args.model == "deepseek-r1-qwen-7b-128k":
+        model_path = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+        gpu_memory_utilization = 0.9
+        max_model_len = 131072
+    elif args.model == "deepseek-r1-qwen3-8b-128k":
         model_path = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
         gpu_memory_utilization = 0.9
         max_model_len = 131072

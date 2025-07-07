@@ -48,6 +48,7 @@ def inputs_from_prompts(
             "deepseek-r1-qwen-7b-128k",
             "deepseek-r1-qwen-14b-128k",
             "deepseek-r1-qwen-32b-128k",
+            "deepseek-r1-qwen3-8b-128k",
             "deepseek-r1-llama-70b-128k",
             "gemma-3-27b-it-128k",
         ]:
