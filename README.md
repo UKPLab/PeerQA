@@ -311,158 +311,158 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
       <tr style="vertical-align: top">
           <td><a href="https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5">Alibaba-NLP/gte-large-en-v1.5</td>
           <td>Dense</td>
-          <td style="background-color: rgba(27, 117, 201, 0.33)">0.3343</td>
-          <td style="background-color: rgba(27, 117, 201, 0.3525)">0.3525</td>
-          <td style="background-color: rgba(27, 117, 201, 0.2892)">0.2892</td>
-          <td style="background-color: rgba(27, 117, 201, 0.3084)">0.3084</td>
-          <td style="background-color: rgba(27, 117, 201, 0.5363)">0.5363</td>
-          <td style="background-color: rgba(27, 117, 201, 0.5360)">0.5360</td>
-          <td style="background-color: rgba(27, 117, 201, 0.3033)">0.3033</td>
-          <td style="background-color: rgba(27, 117, 201, 0.3332)">0.3332</td>
+          <td>$\colorbox{#C6C6E1}{0.3343}$</td>
+          <td>$\colorbox{#C1C2DE}{0.3525}$</td>
+          <td>$\colorbox{#D1D1E6}{0.2892}$</td>
+          <td>$\colorbox{#CCCDE4}{0.3084}$</td>
+          <td>$\colorbox{#9591C3}{0.5363}$</td>
+          <td>$\colorbox{#9591C3}{0.5360}$</td>
+          <td>$\colorbox{#CDCDE4}{0.3033}$</td>
+          <td>$\colorbox{#C6C6E1}{0.3332}$</td>
       </tr>
       <tr style="vertical-align: top">
           <td><a href="https://huggingface.co/Alibaba-NLP/gte-modernbert-base">Alibaba-NLP/gte-modernbert-base</td>
           <td>Dense</td>
-          <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3175</td>
-          <td style="background-color: rgba(27, 117, 201, 0.3751)">0.3751</td>
-          <td style="background-color: rgba(27, 117, 201, 0.2885)">0.2885</td>
-          <td style="background-color: rgba(27, 117, 201, 0.2982)">0.2982</td>
-          <td style="background-color: rgba(27, 117, 201, 0.5385)">0.5385</td>
-          <td style="background-color: rgba(27, 117, 201, 0.5376)">0.5376</td>
-          <td style="background-color: rgba(27, 117, 201, 0.2951)">0.2951</td>
-          <td style="background-color: rgba(27, 117, 201, 0.3183)">0.3183</td>
+          <td>$\colorbox{#C9CAE2}{0.3175}$</td>
+          <td>$\colorbox{#BBBCDB}{0.3751}$</td>
+          <td>$\colorbox{#D1D1E6}{0.2885}$</td>
+          <td>$\colorbox{#CECEE5}{0.2982}$</td>
+          <td>$\colorbox{#9591C3}{0.5385}$</td>
+          <td>$\colorbox{#9591C3}{0.5376}$</td>
+          <td>$\colorbox{#CFCFE5}{0.2951}$</td>
+          <td>$\colorbox{#C9CAE2}{0.3183}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/BAAI/bge-reranker-large">BAAI/bge-reranker-large</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3737)">0.3737</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4893)">0.4893</td>
-        <td style="background-color: rgba(27, 117, 201, 0.2624)">0.2624</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3729)">0.3729</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5763)">0.5763</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6602)">0.6602</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3020)">0.3020</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3746)">0.3746</td>
+        <td>$\colorbox{#BCBDDC}{0.3737}$</td>
+        <td>$\colorbox{#A09CC9}{0.4893}$</td>
+        <td>$\colorbox{#D6D7E9}{0.2624}$</td>
+        <td>$\colorbox{#BCBDDC}{0.3729}$</td>
+        <td>$\colorbox{#8B88BF}{0.5763}$</td>
+        <td>$\colorbox{#7A71B3}{0.6602}$</td>
+        <td>$\colorbox{#CDCDE4}{0.3020}$</td>
+        <td>$\colorbox{#BCBDDC}{0.3746}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">BAAI/bge-reranker-v2-m3</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5143)">0.5143</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5019)">0.5019</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3863)">0.3863</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3957)">0.3957</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6965)">0.6965</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6900)">0.6900</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4041)">0.4041</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4015)">0.4015</td>
+        <td>$\colorbox{#9A96C6}{0.5143}$</td>
+        <td>$\colorbox{#9D99C7}{0.5019}$</td>
+        <td>$\colorbox{#B9BADA}{0.3863}$</td>
+        <td>$\colorbox{#B6B7D8}{0.3957}$</td>
+        <td>$\colorbox{#7363AC}{0.6965}$</td>
+        <td>$\colorbox{#7466AE}{0.6900}$</td>
+        <td>$\colorbox{#B5B4D7}{0.4041}$</td>
+        <td>$\colorbox{#B6B6D8}{0.4015}$</td>
       </tr>
       <!-- <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/BAAI/bge-reranker-v2-gemma">BAAI/bge-reranker-v2-gemma</a></td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
-        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr> -->
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/Alibaba-NLP/gte-multilingual-reranker-base">Alibaba-NLP/gte-multilingual-reranker-base</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4719)">0.4719</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4923)">0.4923</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3502)">0.3502</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3765)">0.3765</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6640)">0.6640</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6600)">0.6600</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3688)">0.3688</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3952)">0.3952</td>
+        <td>$\colorbox{#A5A2CC}{0.4719}$</td>
+        <td>$\colorbox{#A09CC9}{0.4923}$</td>
+        <td>$\colorbox{#C2C3DF}{0.3502}$</td>
+        <td>$\colorbox{#BBBCDB}{0.3765}$</td>
+        <td>$\colorbox{#796FB3}{0.6640}$</td>
+        <td>$\colorbox{#7A71B3}{0.6600}$</td>
+        <td>$\colorbox{#BDBEDC}{0.3688}$</td>
+        <td>$\colorbox{#B6B7D8}{0.3952}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base">Alibaba-NLP/gte-reranker-modernbert-base</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5012)">0.5012</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5242)">0.5242</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3891)">0.3891</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4179)">0.4179</td>
-        <td style="background-color: rgba(27, 117, 201, 0.7031)">0.7031</td>
-        <td style="background-color: rgba(27, 117, 201, 0.7008)">0.7008</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4267)">0.4267</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4574)">0.4574</td>
+        <td>$\colorbox{#9D99C7}{0.5012}$</td>
+        <td>$\colorbox{#9794C5}{0.5242}$</td>
+        <td>$\colorbox{#B8B9D9}{0.3891}$</td>
+        <td>$\colorbox{#B2B1D5}{0.4179}$</td>
+        <td>$\colorbox{#7261AB}{0.7031}$</td>
+        <td>$\colorbox{#7261AB}{0.7008}$</td>
+        <td>$\colorbox{#AFAED3}{0.4267}$</td>
+        <td>$\colorbox{#A8A6CF}{0.4574}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/mixedbread-ai/mxbai-rerank-large-v1">mixedbread-ai/mxbai-rerank-large-v1</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5262)">0.5262</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5313)">0.5313</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3809)">0.3809</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4015)">0.4015</td>
-        <td style="background-color: rgba(27, 117, 201, 0.7235)">0.7235</td>
-        <td style="background-color: rgba(27, 117, 201, 0.7240)">0.7240</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3987)">0.3987</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4171)">0.4171</td>
+        <td>$\colorbox{#9794C5}{0.5262}$</td>
+        <td>$\colorbox{#9693C4}{0.5313}$</td>
+        <td>$\colorbox{#BABBDB}{0.3809}$</td>
+        <td>$\colorbox{#B6B6D8}{0.4015}$</td>
+        <td>$\colorbox{#6E59A7}{0.7235}$</td>
+        <td>$\colorbox{#6E59A7}{0.7240}$</td>
+        <td>$\colorbox{#B6B7D8}{0.3987}$</td>
+        <td>$\colorbox{#B2B1D5}{0.4171}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/tomaarsen/reranker-ModernBERT-base-gooaq-bce">tomaarsen/reranker-ModernBERT-base-gooaq-bce</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4075)">0.4075</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4497)">0.4497</td>
-        <td style="background-color: rgba(27, 117, 201, 0.2738)">0.2738</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3345)">0.3345</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5735)">0.5735</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6317)">0.6317</td>
-        <td style="background-color: rgba(27, 117, 201, 0.2820)">0.2820</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3432)">0.3432</td>
-      </tr>
+        <td>$\colorbox{#B4B3D6}{0.4075}$</td>
+        <td>$\colorbox{#AAA8D0}{0.4497}$</td>
+        <td>$\colorbox{#D5D5E8}{0.2738}$</td>
+        <td>$\colorbox{#C6C6E1}{0.3345}$</td>
+        <td>$\colorbox{#8C89BF}{0.5735}$</td>
+        <td>$\colorbox{#7E7AB8}{0.6317}$</td>
+        <td>$\colorbox{#D2D2E7}{0.2820}$</td>
+        <td>$\colorbox{#C4C4E0}{0.3432}$</td>
+      </tr
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/tomaarsen/reranker-ModernBERT-large-gooaq-bce">tomaarsen/reranker-ModernBERT-large-gooaq-bce</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.4560</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.4644</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3594</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3800</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.6950</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.6887</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3857</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.4218</td>
+        <td>$\colorbox{#A8A6CF}{0.4560}$</td>
+        <td>$\colorbox{#A6A4CD}{0.4644}$</td>
+        <td>$\colorbox{#C0C1DE}{0.3594}$</td>
+        <td>$\colorbox{#BABBDB}{0.3800}$</td>
+        <td>$\colorbox{#7364AD}{0.6950}$</td>
+        <td>$\colorbox{#7466AE}{0.6887}$</td>
+        <td>$\colorbox{#B9BADA}{0.3857}$</td>
+        <td>$\colorbox{#B1B0D4}{0.4218}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/jinaai/jina-reranker-v1-tiny-en">jinaai/jina-reranker-v1-tiny-en</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.1027)">0.1027</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0969)">0.0969</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0656)">0.0656</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0528)">0.0528</td>
-        <td style="background-color: rgba(27, 117, 201, 0.2153)">0.2153</td>
-        <td style="background-color: rgba(27, 117, 201, 0.1578)">0.1578</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0541)">0.0541</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0442)">0.0442</td>
+        <td>$\colorbox{#F1EFF6}{0.1027}$</td>
+        <td>$\colorbox{#F2F0F6}{0.0969}$</td>
+        <td>$\colorbox{#F5F3F8}{0.0656}$</td>
+        <td>$\colorbox{#F6F5F9}{0.0528}$</td>
+        <td>$\colorbox{#DFDFED}{0.2153}$</td>
+        <td>$\colorbox{#E9E8F2}{0.1578}$</td>
+        <td>$\colorbox{#F6F5F9}{0.0541}$</td>
+        <td>$\colorbox{#F7F6FA}{0.0442}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/jinaai/jina-reranker-v1-turbo-en">jinaai/jina-reranker-v1-turbo-en</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0433)">0.0433</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0984)">0.0984</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0489)">0.0489</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0480)">0.0480</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0535)">0.0535</td>
-        <td style="background-color: rgba(27, 117, 201, 0.1617)">0.1617</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0483)">0.0483</td>
-        <td style="background-color: rgba(27, 117, 201, 0.0579)">0.0579</td>
+        <td>$\colorbox{#F7F6FA}{0.0433}$</td>
+        <td>$\colorbox{#F1F0F6}{0.0984}$</td>
+        <td>$\colorbox{#F7F5F9}{0.0489}$</td>
+        <td>$\colorbox{#F7F5F9}{0.0480}$</td>
+        <td>$\colorbox{#F6F5F9}{0.0535}$</td>
+        <td>$\colorbox{#E8E7F2}{0.1617}$</td>
+        <td>$\colorbox{#F7F5F9}{0.0483}$</td>
+        <td>$\colorbox{#F6F4F9}{0.0579}$</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual">jinaai/jina-reranker-v2-base-multilingual</td>
         <td>Cross-Encoder</td>
-        <td style="background-color: rgba(27, 117, 201, 0.4799)">0.4799</td>
-        <td style="background-color: rgba(27, 117, 201, 0.5040)">0.5040</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3350)">0.3350</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3736)">0.3736</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6698)">0.6698</td>
-        <td style="background-color: rgba(27, 117, 201, 0.6966)">0.6966</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3614)">0.3614</td>
-        <td style="background-color: rgba(27, 117, 201, 0.3802)">0.3802</td>
+        <td>$\colorbox{#A3A0CB}{0.4799}$</td>
+        <td>$\colorbox{#9C98C7}{0.5040}$</td>
+        <td>$\colorbox{#C6C6E1}{0.3350}$</td>
+        <td>$\colorbox{#BCBDDC}{0.3736}$</td>
+        <td>$\colorbox{#776CB1}{0.6698}$</td>
+        <td>$\colorbox{#7363AC}{0.6966}$</td>
+        <td>$\colorbox{#BFC0DD}{0.3614}$</td>
+        <td>$\colorbox{#BABBDB}{0.3802}$</td>
       </tr>
     </tbody>
 </table>
