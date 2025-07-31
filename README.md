@@ -311,50 +311,50 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
       <tr style="vertical-align: top">
           <td><a href="https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5">Alibaba-NLP/gte-large-en-v1.5</td>
           <td>Dense</td>
-          <td>$\colorbox{#C6C6E1}{0.3343}$</td>
-          <td>$\colorbox{#C1C2DE}{0.3525}$</td>
-          <td>$\colorbox{#D1D1E6}{0.2892}$</td>
-          <td>$\colorbox{#CCCDE4}{0.3084}$</td>
-          <td>$\colorbox{#9591C3}{0.5363}$</td>
-          <td>$\colorbox{#9591C3}{0.5360}$</td>
-          <td>$\colorbox{#CDCDE4}{0.3033}$</td>
-          <td>$\colorbox{#C6C6E1}{0.3332}$</td>
+          <td>0.3343</td>
+          <td>0.3525</td>
+          <td>0.2892</td>
+          <td>0.3084</td>
+          <td>0.5363</td>
+          <td>0.5360</td>
+          <td>0.3033</td>
+          <td>0.3332</td>
       </tr>
       <tr style="vertical-align: top">
           <td><a href="https://huggingface.co/Alibaba-NLP/gte-modernbert-base">Alibaba-NLP/gte-modernbert-base</td>
           <td>Dense</td>
-          <td>$\colorbox{#C9CAE2}{0.3175}$</td>
-          <td>$\colorbox{#BBBCDB}{0.3751}$</td>
-          <td>$\colorbox{#D1D1E6}{0.2885}$</td>
-          <td>$\colorbox{#CECEE5}{0.2982}$</td>
-          <td>$\colorbox{#9591C3}{0.5385}$</td>
-          <td>$\colorbox{#9591C3}{0.5376}$</td>
-          <td>$\colorbox{#CFCFE5}{0.2951}$</td>
-          <td>$\colorbox{#C9CAE2}{0.3183}$</td>
+          <td>0.3175</td>
+          <td>0.3751</td>
+          <td>0.2885</td>
+          <td>0.2982</td>
+          <td>0.5385</td>
+          <td>0.5376</td>
+          <td>0.2951</td>
+          <td>0.3183</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/BAAI/bge-reranker-large">BAAI/bge-reranker-large</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#BCBDDC}{0.3737}$</td>
-        <td>$\colorbox{#A09CC9}{0.4893}$</td>
-        <td>$\colorbox{#D6D7E9}{0.2624}$</td>
-        <td>$\colorbox{#BCBDDC}{0.3729}$</td>
-        <td>$\colorbox{#8B88BF}{0.5763}$</td>
-        <td>$\colorbox{#7A71B3}{0.6602}$</td>
-        <td>$\colorbox{#CDCDE4}{0.3020}$</td>
-        <td>$\colorbox{#BCBDDC}{0.3746}$</td>
+        <td>0.3737</td>
+        <td>0.4893</td>
+        <td>0.2624</td>
+        <td>0.3729</td>
+        <td>0.5763</td>
+        <td>0.6602</td>
+        <td>0.3020</td>
+        <td>0.3746</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">BAAI/bge-reranker-v2-m3</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#9A96C6}{0.5143}$</td>
-        <td>$\colorbox{#9D99C7}{0.5019}$</td>
-        <td>$\colorbox{#B9BADA}{0.3863}$</td>
-        <td>$\colorbox{#B6B7D8}{0.3957}$</td>
-        <td>$\colorbox{#7363AC}{0.6965}$</td>
-        <td>$\colorbox{#7466AE}{0.6900}$</td>
-        <td>$\colorbox{#B5B4D7}{0.4041}$</td>
-        <td>$\colorbox{#B6B6D8}{0.4015}$</td>
+        <td>0.5143</td>
+        <td>0.5019</td>
+        <td>0.3863</td>
+        <td>0.3957</td>
+        <td>0.6965</td>
+        <td>0.6900</td>
+        <td>0.4041</td>
+        <td>0.4015</td>
       </tr>
       <!-- <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/BAAI/bge-reranker-v2-gemma">BAAI/bge-reranker-v2-gemma</a></td>
@@ -371,98 +371,98 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/Alibaba-NLP/gte-multilingual-reranker-base">Alibaba-NLP/gte-multilingual-reranker-base</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#A5A2CC}{0.4719}$</td>
-        <td>$\colorbox{#A09CC9}{0.4923}$</td>
-        <td>$\colorbox{#C2C3DF}{0.3502}$</td>
-        <td>$\colorbox{#BBBCDB}{0.3765}$</td>
-        <td>$\colorbox{#796FB3}{0.6640}$</td>
-        <td>$\colorbox{#7A71B3}{0.6600}$</td>
-        <td>$\colorbox{#BDBEDC}{0.3688}$</td>
-        <td>$\colorbox{#B6B7D8}{0.3952}$</td>
+        <td>0.4719</td>
+        <td>0.4923</td>
+        <td>0.3502</td>
+        <td>0.3765</td>
+        <td>0.6640</td>
+        <td>0.6600</td>
+        <td>0.3688</td>
+        <td>0.3952</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base">Alibaba-NLP/gte-reranker-modernbert-base</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#9D99C7}{0.5012}$</td>
-        <td>$\colorbox{#9794C5}{0.5242}$</td>
-        <td>$\colorbox{#B8B9D9}{0.3891}$</td>
-        <td>$\colorbox{#B2B1D5}{0.4179}$</td>
-        <td>$\colorbox{#7261AB}{0.7031}$</td>
-        <td>$\colorbox{#7261AB}{0.7008}$</td>
-        <td>$\colorbox{#AFAED3}{0.4267}$</td>
-        <td>$\colorbox{#A8A6CF}{0.4574}$</td>
+        <td>0.5012</td>
+        <td>0.5242</td>
+        <td>0.3891</td>
+        <td>0.4179</td>
+        <td>0.7031</td>
+        <td>0.7008</td>
+        <td>0.4267</td>
+        <td>0.4574</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/mixedbread-ai/mxbai-rerank-large-v1">mixedbread-ai/mxbai-rerank-large-v1</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#9794C5}{0.5262}$</td>
-        <td>$\colorbox{#9693C4}{0.5313}$</td>
-        <td>$\colorbox{#BABBDB}{0.3809}$</td>
-        <td>$\colorbox{#B6B6D8}{0.4015}$</td>
-        <td>$\colorbox{#6E59A7}{0.7235}$</td>
-        <td>$\colorbox{#6E59A7}{0.7240}$</td>
-        <td>$\colorbox{#B6B7D8}{0.3987}$</td>
-        <td>$\colorbox{#B2B1D5}{0.4171}$</td>
+        <td>0.5262</td>
+        <td>0.5313</td>
+        <td>0.3809</td>
+        <td>0.4015</td>
+        <td>0.7235</td>
+        <td>0.7240</td>
+        <td>0.3987</td>
+        <td>0.4171</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/tomaarsen/reranker-ModernBERT-base-gooaq-bce">tomaarsen/reranker-ModernBERT-base-gooaq-bce</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#B4B3D6}{0.4075}$</td>
-        <td>$\colorbox{#AAA8D0}{0.4497}$</td>
-        <td>$\colorbox{#D5D5E8}{0.2738}$</td>
-        <td>$\colorbox{#C6C6E1}{0.3345}$</td>
-        <td>$\colorbox{#8C89BF}{0.5735}$</td>
-        <td>$\colorbox{#7E7AB8}{0.6317}$</td>
-        <td>$\colorbox{#D2D2E7}{0.2820}$</td>
-        <td>$\colorbox{#C4C4E0}{0.3432}$</td>
+        <td>0.4075</td>
+        <td>0.4497</td>
+        <td>0.2738</td>
+        <td>0.3345</td>
+        <td>0.5735</td>
+        <td>0.6317</td>
+        <td>0.2820</td>
+        <td>0.3432</td>
       </tr
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/tomaarsen/reranker-ModernBERT-large-gooaq-bce">tomaarsen/reranker-ModernBERT-large-gooaq-bce</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#A8A6CF}{0.4560}$</td>
-        <td>$\colorbox{#A6A4CD}{0.4644}$</td>
-        <td>$\colorbox{#C0C1DE}{0.3594}$</td>
-        <td>$\colorbox{#BABBDB}{0.3800}$</td>
-        <td>$\colorbox{#7364AD}{0.6950}$</td>
-        <td>$\colorbox{#7466AE}{0.6887}$</td>
-        <td>$\colorbox{#B9BADA}{0.3857}$</td>
-        <td>$\colorbox{#B1B0D4}{0.4218}$</td>
+        <td>0.4560</td>
+        <td>0.4644</td>
+        <td>0.3594</td>
+        <td>0.3800</td>
+        <td>0.6950</td>
+        <td>0.6887</td>
+        <td>0.3857</td>
+        <td>0.4218</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/jinaai/jina-reranker-v1-tiny-en">jinaai/jina-reranker-v1-tiny-en</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#F1EFF6}{0.1027}$</td>
-        <td>$\colorbox{#F2F0F6}{0.0969}$</td>
-        <td>$\colorbox{#F5F3F8}{0.0656}$</td>
-        <td>$\colorbox{#F6F5F9}{0.0528}$</td>
-        <td>$\colorbox{#DFDFED}{0.2153}$</td>
-        <td>$\colorbox{#E9E8F2}{0.1578}$</td>
-        <td>$\colorbox{#F6F5F9}{0.0541}$</td>
-        <td>$\colorbox{#F7F6FA}{0.0442}$</td>
+        <td>0.1027</td>
+        <td>0.0969</td>
+        <td>0.0656</td>
+        <td>0.0528</td>
+        <td>0.2153</td>
+        <td>0.1578</td>
+        <td>0.0541</td>
+        <td>0.0442</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/jinaai/jina-reranker-v1-turbo-en">jinaai/jina-reranker-v1-turbo-en</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#F7F6FA}{0.0433}$</td>
-        <td>$\colorbox{#F1F0F6}{0.0984}$</td>
-        <td>$\colorbox{#F7F5F9}{0.0489}$</td>
-        <td>$\colorbox{#F7F5F9}{0.0480}$</td>
-        <td>$\colorbox{#F6F5F9}{0.0535}$</td>
-        <td>$\colorbox{#E8E7F2}{0.1617}$</td>
-        <td>$\colorbox{#F7F5F9}{0.0483}$</td>
-        <td>$\colorbox{#F6F4F9}{0.0579}$</td>
+        <td>0.0433</td>
+        <td>0.0984</td>
+        <td>0.0489</td>
+        <td>0.0480</td>
+        <td>0.0535</td>
+        <td>0.1617</td>
+        <td>0.0483</td>
+        <td>0.0579</td>
       </tr>
       <tr style="vertical-align: top">
         <td><a href="https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual">jinaai/jina-reranker-v2-base-multilingual</td>
         <td>Cross-Encoder</td>
-        <td>$\colorbox{#A3A0CB}{0.4799}$</td>
-        <td>$\colorbox{#9C98C7}{0.5040}$</td>
-        <td>$\colorbox{#C6C6E1}{0.3350}$</td>
-        <td>$\colorbox{#BCBDDC}{0.3736}$</td>
-        <td>$\colorbox{#776CB1}{0.6698}$</td>
-        <td>$\colorbox{#7363AC}{0.6966}$</td>
-        <td>$\colorbox{#BFC0DD}{0.3614}$</td>
-        <td>$\colorbox{#BABBDB}{0.3802}$</td>
+        <td>0.4799</td>
+        <td>0.5040</td>
+        <td>0.3350</td>
+        <td>0.3736</td>
+        <td>0.6698</td>
+        <td>0.6966</td>
+        <td>0.3614</td>
+        <td>0.3802</td>
       </tr>
     </tbody>
 </table>
