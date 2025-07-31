@@ -46,12 +46,12 @@ uv pip install .
 ```
 
 To process the data locally, you need to run GROBID 0.8.0. By default, the preprocessing script will use GROBID hosted on HuggingFace's Spaces (https://timbmg-peerqa-grobid-0-8-0.hf.space).
+
 - [GROBID 0.8](https://github.com/kermitt2/grobid/releases/tag/0.8.0)
 
 For the BM25 experiments with Pyserini you need:
+
 - Java 21
-
-
 
 ## Data & Preprocessing
 
@@ -76,10 +76,13 @@ To adhere to the licenses of the papers, we cannot provide the papers directly. 
 ```bash
 uv run download_openreview.py
 ```
+
 2. Extract the text from the PDFs to add OpenReview PDF texts to `data/papers.jsonl`. The text is extracted from the PDF with GROBID 0.8.0. By default the script will use the GROBID server hosted on HuggingFace spaces at https://timbmg-peerqa-grobid-0-8-0.hf.space. However, you can also run the GROBID server locally via docker: `docker run -p 8070:8070 lfoppiano/grobid:0.8.0`. To use the local server, set the `--grobid_url` argument to `http://localhost:8070`. Otherwise, the script will use the HuggingFace server. To now extract the text from the PDFs, run:
+
 ```bash
 uv run extract_text_from_pdf.py
 ```
+
 Now, the data is ready for the experiments.
 
 ### Data
@@ -302,95 +305,168 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
 <table>
     <thead>
         <tr><th></th><th></th><th colspan=4>MRR</th><th colspan=4>Recall@10</th></tr>
-        <tr><th>Model</th><th>Architecture</th><th>Para.</th><th>+Title</th><th>Sent.</th><th>+Title</th><th>Para.</th><th>+Title</th><th>Sent.</th><th>+Title</th><tr>
+        <tr><th>Model</th><th>Type</th><th>Para.</th><th>+Title</th><th>Sent.</th><th>+Title</th><th>Para.</th><th>+Title</th><th>Sent.</th><th>+Title</th><tr>
     </thead>
     <tbody>
       <tr style="vertical-align: top">
-          <td>Alibaba-NLP/gte-large-en-v1.5</td>
+          <td><a href="https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5">Alibaba-NLP/gte-large-en-v1.5</td>
           <td>Dense</td>
-          <td>0.3343</td>
-          <td>0.3525</td>
-          <td>0.2892</td>
-          <td>0.3084</td>
-          <td>0.5363</td>
-          <td>0.5360</td>
-          <td>0.3033</td>
-          <td>0.3332</td>
+          <td style="background-color: rgba(27, 117, 201, 0.33)">0.3343</td>
+          <td style="background-color: rgba(27, 117, 201, 0.3525)">0.3525</td>
+          <td style="background-color: rgba(27, 117, 201, 0.2892)">0.2892</td>
+          <td style="background-color: rgba(27, 117, 201, 0.3084)">0.3084</td>
+          <td style="background-color: rgba(27, 117, 201, 0.5363)">0.5363</td>
+          <td style="background-color: rgba(27, 117, 201, 0.5360)">0.5360</td>
+          <td style="background-color: rgba(27, 117, 201, 0.3033)">0.3033</td>
+          <td style="background-color: rgba(27, 117, 201, 0.3332)">0.3332</td>
       </tr>
       <tr style="vertical-align: top">
-          <td>Alibaba-NLP/gte-modernbert-base</td>
+          <td><a href="https://huggingface.co/Alibaba-NLP/gte-modernbert-base">Alibaba-NLP/gte-modernbert-base</td>
           <td>Dense</td>
-          <td>0.3175</td>
-          <td>0.3751</td>
-          <td>0.2885</td>
-          <td>0.2982</td>
-          <td>0.5385</td>
-          <td>0.5376</td>
-          <td>0.2951</td>
-          <td>0.3183</td>
+          <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3175</td>
+          <td style="background-color: rgba(27, 117, 201, 0.3751)">0.3751</td>
+          <td style="background-color: rgba(27, 117, 201, 0.2885)">0.2885</td>
+          <td style="background-color: rgba(27, 117, 201, 0.2982)">0.2982</td>
+          <td style="background-color: rgba(27, 117, 201, 0.5385)">0.5385</td>
+          <td style="background-color: rgba(27, 117, 201, 0.5376)">0.5376</td>
+          <td style="background-color: rgba(27, 117, 201, 0.2951)">0.2951</td>
+          <td style="background-color: rgba(27, 117, 201, 0.3183)">0.3183</td>
       </tr>
       <tr style="vertical-align: top">
-        <td>BAAI/bge-reranker-large</td>
+        <td><a href="https://huggingface.co/BAAI/bge-reranker-large">BAAI/bge-reranker-large</td>
         <td>Cross-Encoder</td>
-        <td>0.3737</td>
-        <td>0.4893</td>
-        <td>0.2624</td>
-        <td>0.3729</td>
-        <td>0.5763</td>
-        <td>0.6602</td>
-        <td>0.3020</td>
-        <td>0.3746</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3737)">0.3737</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4893)">0.4893</td>
+        <td style="background-color: rgba(27, 117, 201, 0.2624)">0.2624</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3729)">0.3729</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5763)">0.5763</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6602)">0.6602</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3020)">0.3020</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3746)">0.3746</td>
       </tr>
       <tr style="vertical-align: top">
-        <td>BAAI/bge-reranker-v2-m3</td>
+        <td><a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">BAAI/bge-reranker-v2-m3</td>
         <td>Cross-Encoder</td>
-        <td>0.5143</td>
-        <td>0.5019</td>
-        <td>0.3863</td>
-        <td>0.3957</td>
-        <td>0.6965</td>
-        <td>0.6900</td>
-        <td>0.4041</td>
-        <td>0.4015</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5143)">0.5143</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5019)">0.5019</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3863)">0.3863</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3957)">0.3957</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6965)">0.6965</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6900)">0.6900</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4041)">0.4041</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4015)">0.4015</td>
+      </tr>
+      <!-- <tr style="vertical-align: top">
+        <td><a href="https://huggingface.co/BAAI/bge-reranker-v2-gemma">BAAI/bge-reranker-v2-gemma</a></td>
+        <td>Cross-Encoder</td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+        <td style="background-color: rgba(27, 117, 201, 1)"></td>
+      </tr> -->
+      <tr style="vertical-align: top">
+        <td><a href="https://huggingface.co/Alibaba-NLP/gte-multilingual-reranker-base">Alibaba-NLP/gte-multilingual-reranker-base</td>
+        <td>Cross-Encoder</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4719)">0.4719</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4923)">0.4923</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3502)">0.3502</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3765)">0.3765</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6640)">0.6640</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6600)">0.6600</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3688)">0.3688</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3952)">0.3952</td>
       </tr>
       <tr style="vertical-align: top">
-        <td>Alibaba-NLP/gte-multilingual-reranker-base</td>
+        <td><a href="https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base">Alibaba-NLP/gte-reranker-modernbert-base</td>
         <td>Cross-Encoder</td>
-        <td>0.4719</td>
-        <td>0.4923</td>
-        <td>0.3502</td>
-        <td>0.3765</td>
-        <td>0.6640</td>
-        <td>0.6600</td>
-        <td>0.3688</td>
-        <td>0.3952</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5012)">0.5012</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5242)">0.5242</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3891)">0.3891</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4179)">0.4179</td>
+        <td style="background-color: rgba(27, 117, 201, 0.7031)">0.7031</td>
+        <td style="background-color: rgba(27, 117, 201, 0.7008)">0.7008</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4267)">0.4267</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4574)">0.4574</td>
       </tr>
       <tr style="vertical-align: top">
-        <td>Alibaba-NLP/gte-reranker-modernbert-base</td>
+        <td><a href="https://huggingface.co/mixedbread-ai/mxbai-rerank-large-v1">mixedbread-ai/mxbai-rerank-large-v1</td>
         <td>Cross-Encoder</td>
-        <td>0.5012</td>
-        <td>0.5242</td>
-        <td>0.3891</td>
-        <td>0.4179</td>
-        <td>0.7031</td>
-        <td>0.7008</td>
-        <td>0.4267</td>
-        <td>0.4574</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5262)">0.5262</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5313)">0.5313</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3809)">0.3809</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4015)">0.4015</td>
+        <td style="background-color: rgba(27, 117, 201, 0.7235)">0.7235</td>
+        <td style="background-color: rgba(27, 117, 201, 0.7240)">0.7240</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3987)">0.3987</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4171)">0.4171</td>
       </tr>
       <tr style="vertical-align: top">
-        <td>mixedbread-ai/mxbai-rerank-large-v1</td>
+        <td><a href="https://huggingface.co/tomaarsen/reranker-ModernBERT-base-gooaq-bce">tomaarsen/reranker-ModernBERT-base-gooaq-bce</td>
         <td>Cross-Encoder</td>
-        <td>0.5262</td>
-        <td>0.5313</td>
-        <td>0.3809</td>
-        <td>0.4015</td>
-        <td>0.7235</td>
-        <td>0.7240</td>
-        <td>0.3987</td>
-        <td>0.4171</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4075)">0.4075</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4497)">0.4497</td>
+        <td style="background-color: rgba(27, 117, 201, 0.2738)">0.2738</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3345)">0.3345</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5735)">0.5735</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6317)">0.6317</td>
+        <td style="background-color: rgba(27, 117, 201, 0.2820)">0.2820</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3432)">0.3432</td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td><a href="https://huggingface.co/tomaarsen/reranker-ModernBERT-large-gooaq-bce">tomaarsen/reranker-ModernBERT-large-gooaq-bce</td>
+        <td>Cross-Encoder</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.4560</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.4644</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3594</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3800</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.6950</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.6887</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.3857</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3175)">0.4218</td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td><a href="https://huggingface.co/jinaai/jina-reranker-v1-tiny-en">jinaai/jina-reranker-v1-tiny-en</td>
+        <td>Cross-Encoder</td>
+        <td style="background-color: rgba(27, 117, 201, 0.1027)">0.1027</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0969)">0.0969</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0656)">0.0656</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0528)">0.0528</td>
+        <td style="background-color: rgba(27, 117, 201, 0.2153)">0.2153</td>
+        <td style="background-color: rgba(27, 117, 201, 0.1578)">0.1578</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0541)">0.0541</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0442)">0.0442</td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td><a href="https://huggingface.co/jinaai/jina-reranker-v1-turbo-en">jinaai/jina-reranker-v1-turbo-en</td>
+        <td>Cross-Encoder</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0433)">0.0433</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0984)">0.0984</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0489)">0.0489</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0480)">0.0480</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0535)">0.0535</td>
+        <td style="background-color: rgba(27, 117, 201, 0.1617)">0.1617</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0483)">0.0483</td>
+        <td style="background-color: rgba(27, 117, 201, 0.0579)">0.0579</td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td><a href="https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual">jinaai/jina-reranker-v2-base-multilingual</td>
+        <td>Cross-Encoder</td>
+        <td style="background-color: rgba(27, 117, 201, 0.4799)">0.4799</td>
+        <td style="background-color: rgba(27, 117, 201, 0.5040)">0.5040</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3350)">0.3350</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3736)">0.3736</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6698)">0.6698</td>
+        <td style="background-color: rgba(27, 117, 201, 0.6966)">0.6966</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3614)">0.3614</td>
+        <td style="background-color: rgba(27, 117, 201, 0.3802)">0.3802</td>
       </tr>
     </tbody>
 </table>
+
 
 The upperbound for Recall@10 on the paragraph level is 0.995 and on the sentence level is 0.9793.
 

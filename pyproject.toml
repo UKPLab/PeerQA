@@ -16,6 +16,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "datasets>=2.3.2",
+    "einops>=0.8.1",
     "en-core-sci-sm",
     "en-core-web-sm",
     "grobid-client-python",

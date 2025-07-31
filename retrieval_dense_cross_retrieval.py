@@ -28,7 +28,7 @@ class Args:
     qa_file: Path = field(default=Path("data/qa.jsonl"))
     papers_file: Path = field(default=Path("data/papers.jsonl"))
     sim_fn: Literal["cos", "dot", "cross"] = "dot"
-    batch_size: int = 32
+    batch_size: int = 16
     pooling: str = None
     granularity: Literal["sentences", "paragraphs"] = "sentences"
     template: str = None
@@ -45,7 +45,7 @@ def init_model(model, pooling):
     if args.model_cls == "st":
         model_cls = SentenceTransformer
     elif args.model_cls == "cross":
-        model_cls = CrossEncoder
+        model_cls = partial(CrossEncoder, trust_remote_code=True)
     elif args.model_cls == "hf":
         model_cls = partial(HFBase, pooling=pooling)
     elif args.model_cls == "splade":
