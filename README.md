@@ -467,6 +467,22 @@ To run the answer generation task with OpenAI models, use `generate_openai.py` i
     </tbody>
 </table>
 
+|Model|Type|MRR||||Recall@10||||
+|--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
+|||Para.|+Title|Sent.|+Title|Para.|+Title|Sent.|+Title|
+|[Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)|Dense|$\colorbox{#C6C6E1}{0.3343}$|$\colorbox{#C1C2DE}{0.3525}$|$\colorbox{#D1D1E6}{0.2892}$|$\colorbox{#CCCDE4}{0.3084}$|$\colorbox{#9591C3}{0.5363}$|$\colorbox{#9591C3}{0.5360}$|$\colorbox{#CDCDE4}{0.3033}$|$\colorbox{#C6C6E1}{0.3332}$|
+|[Alibaba-NLP/gte-modernbert-base](https://huggingface.co/Alibaba-NLP/gte-modernbert-base)|Dense|$\colorbox{#C9CAE2}{0.3175}$|$\colorbox{#BBBCDB}{0.3751}$|$\colorbox{#D1D1E6}{0.2885}$|$\colorbox{#CECEE5}{0.2982}$|$\colorbox{#9591C3}{0.5385}$|$\colorbox{#9591C3}{0.5376}$|$\colorbox{#CFCFE5}{0.2951}$|$\colorbox{#C9CAE2}{0.3183}$|
+|[BAAI/bge-reranker-large](https://huggingface.co/BAAI/bge-reranker-large)|Cross-Encoder|$\colorbox{#BCBDDC}{0.3737}$|$\colorbox{#A09CC9}{0.4893}$|$\colorbox{#D6D7E9}{0.2624}$|$\colorbox{#BCBDDC}{0.3729}$|$\colorbox{#8B88BF}{0.5763}$|$\colorbox{#7A71B3}{0.6602}$|$\colorbox{#CDCDE4}{0.3020}$|$\colorbox{#BCBDDC}{0.3746}$|
+|[BAAI/bge-reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3)|Cross-Encoder|$\colorbox{#9A96C6}{0.5143}$|$\colorbox{#9D99C7}{0.5019}$|$\colorbox{#B9BADA}{0.3863}$|$\colorbox{#B6B7D8}{0.3957}$|$\colorbox{#7363AC}{0.6965}$|$\colorbox{#7466AE}{0.6900}$|$\colorbox{#B5B4D7}{0.4041}$|$\colorbox{#B6B6D8}{0.4015}$|
+|[Alibaba-NLP/gte-multilingual-reranker-base](https://huggingface.co/Alibaba-NLP/gte-multilingual-reranker-base)|Cross-Encoder|$\colorbox{#A5A2CC}{0.4719}$|$\colorbox{#A09CC9}{0.4923}$|$\colorbox{#C2C3DF}{0.3502}$|$\colorbox{#BBBCDB}{0.3765}$|$\colorbox{#796FB3}{0.6640}$|$\colorbox{#7A71B3}{0.6600}$|$\colorbox{#BDBEDC}{0.3688}$|$\colorbox{#B6B7D8}{0.3952}$|
+|[Alibaba-NLP/gte-reranker-modernbert-base](https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base)|Cross-Encoder|$\colorbox{#9D99C7}{0.5012}$|$\colorbox{#9794C5}{0.5242}$|$\colorbox{#B8B9D9}{0.3891}$|$\colorbox{#B2B1D5}{0.4179}$|$\colorbox{#7261AB}{0.7031}$|$\colorbox{#7261AB}{0.7008}$|$\colorbox{#AFAED3}{0.4267}$|$\colorbox{#A8A6CF}{0.4574}$|
+|[mixedbread-ai/mxbai-rerank-large-v1](https://huggingface.co/mixedbread-ai/mxbai-rerank-large-v1)|Cross-Encoder|$\colorbox{#9794C5}{0.5262}$|$\colorbox{#9693C4}{0.5313}$|$\colorbox{#BABBDB}{0.3809}$|$\colorbox{#B6B6D8}{0.4015}$|$\colorbox{#6E59A7}{0.7235}$|$\colorbox{#6E59A7}{0.7240}$|$\colorbox{#B6B7D8}{0.3987}$|$\colorbox{#B2B1D5}{0.4171}$|
+|[tomaarsen/reranker-ModernBERT-base-gooaq-bce](https://huggingface.co/tomaarsen/reranker-ModernBERT-base-gooaq-bce)|Cross-Encoder|$\colorbox{#B4B3D6}{0.4075}$|$\colorbox{#AAA8D0}{0.4497}$|$\colorbox{#D5D5E8}{0.2738}$|$\colorbox{#C6C6E1}{0.3345}$|$\colorbox{#8C89BF}{0.5735}$|$\colorbox{#7E7AB8}{0.6317}$|$\colorbox{#D2D2E7}{0.2820}$|$\colorbox{#C4C4E0}{0.3432}$|
+|[tomaarsen/reranker-ModernBERT-large-gooaq-bce](https://huggingface.co/tomaarsen/reranker-ModernBERT-large-gooaq-bce)|Cross-Encoder|$\colorbox{#A8A6CF}{0.4560}$|$\colorbox{#A6A4CD}{0.4644}$|$\colorbox{#C0C1DE}{0.3594}$|$\colorbox{#BABBDB}{0.3800}$|$\colorbox{#7364AD}{0.6950}$|$\colorbox{#7466AE}{0.6887}$|$\colorbox{#B9BADA}{0.3857}$|$\colorbox{#B1B0D4}{0.4218}$|
+|[jinaai/jina-reranker-v1-tiny-en](https://huggingface.co/jinaai/jina-reranker-v1-tiny-en)|Cross-Encoder|$\colorbox{#F1EFF6}{0.1027}$|$\colorbox{#F2F0F6}{0.0969}$|$\colorbox{#F5F3F8}{0.0656}$|$\colorbox{#F6F5F9}{0.0528}$|$\colorbox{#DFDFED}{0.2153}$|$\colorbox{#E9E8F2}{0.1578}$|$\colorbox{#F6F5F9}{0.0541}$|$\colorbox{#F7F6FA}{0.0442}$|
+|[jinaai/jina-reranker-v1-turbo-en](https://huggingface.co/jinaai/jina-reranker-v1-turbo-en)|Cross-Encoder|$\colorbox{#F7F6FA}{0.0433}$|$\colorbox{#F1F0F6}{0.0984}$|$\colorbox{#F7F5F9}{0.0489}$|$\colorbox{#F7F5F9}{0.0480}$|$\colorbox{#F6F5F9}{0.0535}$|$\colorbox{#E8E7F2}{0.1617}$|$\colorbox{#F7F5F9}{0.0483}$|$\colorbox{#F6F4F9}{0.0579}$|
+|[jinaai/jina-reranker-v2-base-multilingual](https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual)|Cross-Encoder|$\colorbox{#A3A0CB}{0.4799}$|$\colorbox{#9C98C7}{0.5040}$|$\colorbox{#C6C6E1}{0.3350}$|$\colorbox{#BCBDDC}{0.3736}$|$\colorbox{#776CB1}{0.6698}$|$\colorbox{#7363AC}{0.6966}$|$\colorbox{#BFC0DD}{0.3614}$|$\colorbox{#BABBDB}{0.3802}$|
+
 
 The upperbound for Recall@10 on the paragraph level is 0.995 and on the sentence level is 0.9793.
 
