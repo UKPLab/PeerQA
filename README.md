@@ -77,7 +77,7 @@ To adhere to the licenses of the papers, we cannot provide the papers directly. 
 uv run download_openreview.py
 ```
 
-2. Extract the text from the PDFs to add OpenReview PDF texts to `data/papers.jsonl`. The text is extracted from the PDF with GROBID 0.8.0. By default the script will use the GROBID server hosted on HuggingFace spaces at https://timbmg-peerqa-grobid-0-8-0.hf.space. However, you can also run the GROBID server locally via docker: `docker run -p 8070:8070 lfoppiano/grobid:0.8.0`. To use the local server, set the `--grobid_url` argument to `http://localhost:8070`. Otherwise, the script will use the HuggingFace server. To now extract the text from the PDFs, run:
+2. Extract the text from the PDFs to add OpenReview PDF texts to `data/papers.jsonl`. The text is extracted from the PDF with GROBID 0.8.0. By default the script will use the GROBID server hosted on HuggingFace spaces at https://timbmg-peerqa-grobid-0-8-0.hf.space. However, you can also run the GROBID server locally via docker: `docker run -p 8070:8070 lfoppiano/grobid:0.8.0`. To use the local server, set the `--grobid_server` argument to `http://localhost:8070`. Otherwise, the script will use the HuggingFace server. To now extract the text from the PDFs, run:
 
 ```bash
 uv run extract_text_from_pdf.py
