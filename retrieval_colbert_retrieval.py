@@ -47,7 +47,7 @@ def main(args):
         template_hash = url_save_hash(args.template)
         logger.info(f"Adding template hash {template_hash} to subdir.")
         subdir += f"-{template_hash}"
-    experiment_dir = str(args.output_dir / subdir).replace("\\", "/")
+    experiment_dir = str(args.output_dir / subdir)
 
     query_files = list((args.output_dir / subdir).glob("*/queries.tsv"))
     for query_file in tqdm(query_files, ncols=80):
