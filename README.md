@@ -62,7 +62,7 @@ This section describes how to download the data from the different sources and h
 1. Create a new directory `data` and download and unzip the questions into it
 
 ```bash
-mkdir data && cd data && curl -LO 'https://tudatalib.ulb.tu-darmstadt.de/bitstream/handle/tudatalib/4467/peerqa-data-v1.0.zip?sequence=1&isAllowed=y' && unzip peerqa-data-v1.0.zip && rm peerqa-data-v1.0.zip && cd ..
+mkdir data && cd data && curl -L 'https://tudatalib.ulb.tu-darmstadt.de/bitstream/handle/tudatalib/4467/peerqa-data-v1.0.zip?sequence=1&isAllowed=y' -o peerqa-data-v1.0.zip && unzip peerqa-data-v1.0.zip && rm peerqa-data-v1.0.zip && cd ..
 ```
 
 ### Papers
@@ -77,7 +77,7 @@ To adhere to the licenses of the papers, we cannot provide the papers directly. 
 uv run download_openreview.py
 ```
 
-2. Extract the text from the PDFs to add OpenReview PDF texts to `data/papers.jsonl`. The text is extracted from the PDF with GROBID 0.8.0. By default the script will use the GROBID server hosted on HuggingFace spaces at https://timbmg-peerqa-grobid-0-8-0.hf.space. However, you can also run the GROBID server locally via docker: `docker run -p 8070:8070 lfoppiano/grobid:0.8.0`. To use the local server, set the `--grobid_url` argument to `http://localhost:8070`. Otherwise, the script will use the HuggingFace server. To now extract the text from the PDFs, run:
+2. Extract the text from the PDFs to add OpenReview PDF texts to `data/papers.jsonl`. The text is extracted from the PDF with GROBID 0.8.0. By default the script will use the GROBID server hosted on HuggingFace spaces at https://timbmg-peerqa-grobid-0-8-0.hf.space. However, you can also run the GROBID server locally via docker: `docker run -p 8070:8070 lfoppiano/grobid:0.8.0`. To use the local server, set the `--grobid_server` argument to `http://localhost:8070`. Otherwise, the script will use the HuggingFace server. To now extract the text from the PDFs, run:
 
 ```bash
 uv run extract_text_from_pdf.py
