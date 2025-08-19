@@ -46,15 +46,14 @@ def main(args):
         template_hash = url_save_hash(args.template)
         logger.info(f"Adding template hash {template_hash} to subdir.")
         subdir += f"-{template_hash}"
-    experiment_dir = str(args.output_dir / subdir)
+    experiment_dir = str(args.output_dir / subdir).replace("\\", "/")
 
     collection_files = list((args.output_dir / subdir).glob("*/collection.tsv"))
     for collection_file in tqdm(collection_files, ncols=80):
-        # experiment_dir = collection_file.parent
         paper_id = str(collection_file.parts[-2])
 
-        index_path = Path(
-            f"{experiment_dir}/{paper_id}/indexes/paper.nbits=2/ivf.pid.pt"
+        index_path = (
+            Path(experiment_dir) / paper_id / "indexes" / "paper.nbits=2" / "ivf.pid.pt"
         )
         if index_path.exists():
             logger.info(

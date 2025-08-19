@@ -223,7 +223,10 @@ def main(args):
 
     metric_cols = [c for c in gen_df.columns if "prometheus" in c]
     gen_df[["paper_id", "question_id", *metric_cols]].to_json(
-        out_file, orient="records", lines=True
+        out_file,
+        orient="records",
+        lines=True,
+        encoding="utf-8",
     )
 
 

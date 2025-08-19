@@ -47,15 +47,13 @@ def main(args):
         template_hash = url_save_hash(args.template)
         logger.info(f"Adding template hash {template_hash} to subdir.")
         subdir += f"-{template_hash}"
-    experiment_dir = str(args.output_dir / subdir)
+    experiment_dir = str(args.output_dir / subdir).replace("\\", "/")
 
     query_files = list((args.output_dir / subdir).glob("*/queries.tsv"))
     for query_file in tqdm(query_files, ncols=80):
         paper_id = str(query_file.parts[-2])
 
-        index_path = Path(
-            f"{experiment_dir}/{paper_id}/indexes/paper.nbits=2/ivf.pid.pt"
-        )
+        index_path = Path(experiment_dir) / paper_id / "indexes" / "paper.nbits=2" / "ivf.pid.pt"
         assert index_path.exists(), index_path
 
         with Run().context(

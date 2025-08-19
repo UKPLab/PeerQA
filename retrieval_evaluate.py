@@ -78,6 +78,7 @@ def main(args: Args):
     with open(
         run_file.with_name(new_filename),
         "w",
+        encoding="utf-8"
     ) as f:
         json.dump(metrics, f, indent=2)
 

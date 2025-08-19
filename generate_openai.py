@@ -291,10 +291,15 @@ def main(args: Args):
     for _id, completion in zip(ids, completions):
         generations.append({**_id, "generation": completion.choices[0].message.content})
 
-    out_file = f"{str(args.output_dir)}/generations-{exp}.jsonl"
+    out_file = str(args.output_dir / f"generations-{exp}.jsonl")
     logger.info(f"Writing generations to {out_file}")
     df_generations = pd.DataFrame(generations)
-    df_generations.to_json(out_file, orient="records", lines=True)
+    df_generations.to_json(
+        out_file,
+        orient="records",
+        lines=True,
+        encoding="utf-8",
+    )
 
 
 if __name__ == "__main__":

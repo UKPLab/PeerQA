@@ -282,7 +282,12 @@ def main(args: Args):
     out_file = f"{str(args.output_dir)}/generations-{exp}.jsonl"
     logger.info(f"Writing generations to {out_file}")
     df_generations = pd.DataFrame(generations)
-    df_generations.to_json(out_file, orient="records", lines=True)
+    df_generations.to_json(
+        out_file,
+        orient="records",
+        lines=True,
+        encoding="utf-8",
+    )
 
     logger.debug(f"Sample Generation:\n{df_generations.sample(1).to_json(indent=2)}")
 

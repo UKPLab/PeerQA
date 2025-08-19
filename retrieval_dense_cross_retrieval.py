@@ -192,7 +192,7 @@ def main(args: Args):
             for didx, score in zip(document_ids, scores[i]):
                 run[question_id][didx] = score.item()
 
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(run, f, indent=2)
 
 

@@ -67,7 +67,11 @@ def main(args: Args):
 
     logger.info("Saving classification report.")
     clf_report = classification_report(**clf_report_kwargs, output_dict=True)
-    pd.DataFrame(clf_report).to_json(out_file, indent=2)
+    pd.DataFrame(clf_report).to_json(
+        out_file,
+        indent=2,
+        encoding="utf-8",
+    )
 
 
 if __name__ == "__main__":
