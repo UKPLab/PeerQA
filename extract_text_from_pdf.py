@@ -266,7 +266,6 @@ def main(args: Args):
                         lines=True,
                         force_ascii=False,
                         orient="records",
-                        encoding="utf-8",
                     )
 
     if not paper_content_files:
@@ -289,7 +288,6 @@ def main(args: Args):
             lines=True,
             force_ascii=False,
             orient="records",
-            encoding="utf-8",
         )
     else:
         logger.info(f"Appending to {args.papers_file}")
@@ -299,7 +297,6 @@ def main(args: Args):
             force_ascii=False,
             orient="records",
             mode="a",
-            encoding="utf-8",
         )
 
 

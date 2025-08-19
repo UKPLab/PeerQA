@@ -279,15 +279,10 @@ def main(args: Args):
         outputs = llm.generate(inputs, sampling_params)
         generations = process_outputs(outputs, ids)
 
-    out_file = f"{str(args.output_dir)}/generations-{exp}.jsonl"
+    out_file = str(args.output_dir / f"generations-{exp}.jsonl")
     logger.info(f"Writing generations to {out_file}")
     df_generations = pd.DataFrame(generations)
-    df_generations.to_json(
-        out_file,
-        orient="records",
-        lines=True,
-        encoding="utf-8",
-    )
+    df_generations.to_json(out_file, orient="records", lines=True)
 
     logger.debug(f"Sample Generation:\n{df_generations.sample(1).to_json(indent=2)}")
 

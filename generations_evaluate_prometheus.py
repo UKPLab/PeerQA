@@ -226,7 +226,6 @@ def main(args):
         out_file,
         orient="records",
         lines=True,
-        encoding="utf-8",
     )
 
 
