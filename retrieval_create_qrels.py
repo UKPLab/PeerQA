@@ -57,7 +57,7 @@ def main(args):
     for name, qrels in zip(
         ["sentences", "paragraphs"], [sentence_qrels, paragraph_qrels]
     ):
-        with open(args.output_dir / f"qrels.{name}.json", "w") as f:
+        with open(args.output_dir / f"qrels.{name}.json", "w", encoding="utf-8") as f:
             json.dump(qrels, f, indent=2)
 
 

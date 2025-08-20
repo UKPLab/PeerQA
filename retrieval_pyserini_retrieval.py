@@ -58,7 +58,9 @@ def main(args: Args):
                 run[question_id][hit.docid] = hit.score
 
         with open(
-            args.output_dir / f"run-{args.granularity}-bm25-sparse.json", "w"
+            args.output_dir / f"run-{args.granularity}-bm25-sparse.json",
+            "w",
+            encoding="utf-8",
         ) as f:
             json.dump(run, f, indent=2)
 

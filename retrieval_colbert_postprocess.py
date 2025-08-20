@@ -62,7 +62,7 @@ def main(args):
             for qid, doc_id, rank, score in csv.reader(fh, delimiter="\t"):
                 run[qid][doc_id] = float(score)
 
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(run, f, indent=2)
 
 

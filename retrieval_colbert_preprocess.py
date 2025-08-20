@@ -50,7 +50,7 @@ def main(args):
             args.output_dir / subdir / f"{url_save_str(paper_id)}" / "queries.tsv"
         )
         queries_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(queries_path, "w") as fh:
+        with open(queries_path, "w", encoding="utf-8") as fh:
             for question_id, question in zip(question_ids, questions):
                 fh.write(f"{question_id}\t{question}\n")
 
@@ -59,7 +59,7 @@ def main(args):
             args.output_dir / subdir / f"{url_save_str(paper_id)}" / "collection.tsv"
         )
         collection_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(collection_path, "w") as fh:
+        with open(collection_path, "w", encoding="utf-8") as fh:
             for document_id, document in zip(document_ids, documents):
                 fh.write(f"{document_id}\t{document}\n")
 

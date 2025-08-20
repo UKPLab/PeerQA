@@ -53,9 +53,7 @@ def main(args):
     for query_file in tqdm(query_files, ncols=80):
         paper_id = str(query_file.parts[-2])
 
-        index_path = Path(
-            f"{experiment_dir}/{paper_id}/indexes/paper.nbits=2/ivf.pid.pt"
-        )
+        index_path = Path(experiment_dir) / paper_id / "indexes" / "paper.nbits=2" / "ivf.pid.pt"
         assert index_path.exists(), index_path
 
         with Run().context(

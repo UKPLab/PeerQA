@@ -61,8 +61,19 @@ This section describes how to download the data from the different sources and h
 
 1. Create a new directory `data` and download and unzip the questions into it
 
+#### Linux/Mac
 ```bash
 mkdir data && cd data && curl -L 'https://tudatalib.ulb.tu-darmstadt.de/bitstream/handle/tudatalib/4467/peerqa-data-v1.0.zip?sequence=1&isAllowed=y' -o peerqa-data-v1.0.zip && unzip peerqa-data-v1.0.zip && rm peerqa-data-v1.0.zip && cd ..
+```
+
+#### Windows
+```powershell
+mkdir data
+cd data
+Invoke-WebRequest -Uri 'https://tudatalib.ulb.tu-darmstadt.de/bitstream/handle/tudatalib/4467/peerqa-data-v1.0.zip?sequence=1&isAllowed=y' -OutFile 'peerqa-data-v1.0.zip'
+Expand-Archive -LiteralPath '.\peerqa-data-v1.0.zip' -DestinationPath '.'
+Remove-Item 'peerqa-data-v1.0.zip'
+cd ..
 ```
 
 ### Papers

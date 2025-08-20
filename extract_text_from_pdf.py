@@ -114,7 +114,7 @@ def main(args: Args):
     paper_content_files = []
     for paper_pdf_file in tqdm(pdfs_to_process, ncols=80, desc="Processing PDFs"):
         base_path = paper_pdf_file.parent
-        paper_id = str(Path(*paper_pdf_file.parts[1:]).parent)
+        paper_id = str(Path(*paper_pdf_file.parts[1:]).parent).replace("\\", "/")
         if paper_loader.has_paper_id(paper_id) and not args.override:
             logger.info(f"Skipping {paper_pdf_file}. Already present in {args.papers_file}.")
             continue
@@ -128,7 +128,7 @@ def main(args: Args):
                 str(paper_pdf_file),
                 **GROBID_PROCESS_PDF_ARGS
             )
-            with open(tei_path, "w") as f:
+            with open(tei_path, "w", encoding="utf-8") as f:
                 f.write(tei)
 
         # convert the TEI to an .itg.json
@@ -143,7 +143,7 @@ def main(args: Args):
             itg = IntertextSentenceSplitter(itg).add_sentences_to_itg()
 
             # dump itg to file
-            with open(itg_path, "w") as f:
+            with open(itg_path, "w", encoding="utf-8") as f:
                 f.write(itg.to_json())
 
         # convert the .itg.json to a list of sentences including the paragraph and 
@@ -262,7 +262,10 @@ def main(args: Args):
 
                 with open(content_path, "w", encoding="utf-8") as file:
                     pd.DataFrame(content).to_json(
-                        file, lines=True, force_ascii=False, orient="records"
+                        file, 
+                        lines=True,
+                        force_ascii=False,
+                        orient="records",
                     )
 
     if not paper_content_files:
@@ -274,14 +277,17 @@ def main(args: Args):
     for paper_content_file in paper_content_files:
         _df = pd.read_json(paper_content_file, lines=True)
         # strip the args.data_dir and file name
-        _df["paper_id"] = str(Path(*paper_content_file.parts[1:]).parent)
+        _df["paper_id"] = str(Path(*paper_content_file.parts[1:]).parent).replace("\\", "/")
         df.append(_df)
     df = pd.concat(df)
 
     if args.override:
         logger.info(f"Overwriting {args.papers_file}")
         df.to_json(
-            args.data_path / "papers.jsonl", lines=True, force_ascii=False, orient="records"
+            args.data_path / "papers.jsonl",
+            lines=True,
+            force_ascii=False,
+            orient="records",
         )
     else:
         logger.info(f"Appending to {args.papers_file}")

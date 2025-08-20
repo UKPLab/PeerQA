@@ -71,7 +71,7 @@ def main(args: Args):
                     }
                 )
 
-            with open(paper_index_path / "documents.json", "w") as f:
+            with open(paper_index_path / "documents.json", "w", encoding="utf-8") as f:
                 json.dump(pyserini_data[paper_id], f, indent=2)
 
         elif args.output_type == "dense":
@@ -83,7 +83,7 @@ def main(args: Args):
                     }
                 )
             # dump to jsonl
-            with open(paper_index_path / "documents.json", "w") as f:
+            with open(paper_index_path / "documents.json", "w", encoding="utf-8") as f:
                 for doc in pyserini_data[paper_id]:
                     f.write(json.dumps(doc) + "\n")
         else:
@@ -93,7 +93,11 @@ def main(args: Args):
     topics_dir = args.output_dir / "pyserini" / f"topics"
     topics_dir.mkdir(parents=True, exist_ok=True)
     for paper_id, topics in paper_to_topics.items():
-        with open(topics_dir / f"{url_save_str(paper_id)}.tsv", "w") as f:
+        with open(
+            topics_dir / f"{url_save_str(paper_id)}.tsv",
+            "w",
+            encoding="utf-8",
+        ) as f:
             for topic in topics:
                 f.write("\t".join(topic) + "\n")
 
