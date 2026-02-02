@@ -1,11 +1,12 @@
+# PeerQA: A Scientific Question Answering Dataset from Peer Reviews
 <div align="center">
-<h1>PeerQA: A Scientific Question Answering Dataset from Peer Reviews</h1>
 
-[![Arxiv](https://img.shields.io/badge/Arxiv-2502.13668-red?style=flat-square&logo=arxiv&logoColor=white)](http://arxiv.org/abs/2502.13668)
-[![HuggingFace](https://img.shields.io/badge/Dataset-UKPLab/PeerQA-blue?style=flat-square&logo=huggingface&logoColor=yellow)](https://huggingface.co/datasets/UKPLab/PeerQA)
-[![License](https://img.shields.io/badge/License-Apache--2.0-green?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
-[![Python Versions](https://img.shields.io/badge/Python-3.10-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-
+[![ACL](https://img.shields.io/badge/NAACL%202025-Paper-ED1C24)](https://aclanthology.org/2025.naacl-long.22/)
+[![GitHub](https://img.shields.io/badge/GitHub-Code-black?logo=github)](https://github.com/UKPLab/PeerQA)
+[![HuggingFace](https://img.shields.io/badge/Hugging%20Face-Data-FFD21E?logo=huggingface)](https://huggingface.co/datasets/UKPLab/PeerQA)
+[![Video](https://img.shields.io/badge/Video-075190?logo=youtube&logoColor=white)](https://drive.google.com/file/d/1aZOa45OwATr38hblG5avPiWMSbg_XFB6/view?usp=sharing)
+[![Slides](https://img.shields.io/badge/Slides-075190?logo=reveal.js&logoColor=white)](https://drive.google.com/file/d/1XKHfqxtp_B6zqOPvXKuwbMcrMblulB-m/view?usp=sharing)
+[![Poster](https://img.shields.io/badge/Poster-075190?logo=reveal.js&logoColor=white)](https://drive.google.com/file/d/1sXOVieZzDNyxOPkH_Uz8j1QS0-Du0_XF/view?usp=sharing)
 </div>
 
 <img src="./peer-qa-overview-with-note.png" align="right" width="275" style="padding: 10px">
