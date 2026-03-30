@@ -220,7 +220,7 @@
       font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
       letter-spacing: 1.5px; color: var(--accent); margin-bottom: 12px;
     }
-    .section-label::before { content: ''; width: 20px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--teal)); border-radius: 2px; }
+    .section-label::before { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
     .section h2, .section-alt h2 {
       font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
       color: var(--text); margin-bottom: 24px; letter-spacing: -0.3px;
@@ -731,8 +731,8 @@
     <!-- ABSTRACT -->
     <section class="section" id="abstract">
       <div class="container">
-        <div class="section-label"><span class="title-gradient">Summary</span></div>
-        <h2><span class="title-gradient">TL;DR</span></h2>
+        <div class="section-label">Summary</div>
+        <h2>TL;<span class="title-gradient">DR</span></h2>
 
         <!-- Pipeline diagram: wide, horizontal layout -->
         <div class="figure-wrapper">
@@ -797,8 +797,8 @@
     <!-- STATS -->
     <section class="section-alt" id="data">
       <div class="container">
-        <div class="section-label"><span class="title-gradient">Dataset</span></div>
-        <h2>At a Glance</h2>
+        <div class="section-label">Dataset</div>
+        <h2>At a <span class="title-gradient">Glance</span></h2>
         <div class="stats-grid">
           <div class="stat-card fade-up"><span class="stat-number" data-target="579">0</span><span class="stat-label">Labeled QA Pairs</span></div>
           <div class="stat-card fade-up stagger-1"><span class="stat-number" data-target="208">0</span><span class="stat-label">Academic Papers</span></div>
@@ -813,8 +813,8 @@
     <!-- EXAMPLE -->
     <section class="section" id="example">
       <div class="container">
-        <div class="section-label"><span class="title-gradient">Example</span></div>
-        <h2>PeerQA Examples</h2>
+        <div class="section-label">Example</div>
+        <h2><span class="title-gradient">PeerQA</span> Examples</h2>
         <div class="example-tabs">
           <button class="example-tab active" data-tab="answerable">Answerable</button>
           <button class="example-tab" data-tab="unanswerable">Unanswerable</button>
@@ -853,8 +853,8 @@
     <!-- TASKS -->
     <section class="section-alt" id="tasks">
       <div class="container">
-        <div class="section-label"><span class="title-gradient">Benchmark</span></div>
-        <h2>Three Tasks</h2>
+        <div class="section-label">Benchmark</div>
+        <h2>Three <span class="title-gradient">Tasks</span></h2>
         <div class="tasks-grid">
           <div class="task-card fade-up">
             <div class="task-card-head">
@@ -884,8 +884,8 @@
     <!-- RESULTS -->
     <section class="section" id="results">
       <div class="container">
-        <div class="section-label"><span class="title-gradient">Experiments</span></div>
-        <h2>Results</h2>
+        <div class="section-label">Experiments</div>
+        <h2><span class="title-gradient">Results</span></h2>
 
         <!-- Task 1 -->
         <div class="result-block fade-up">
@@ -938,7 +938,7 @@
     <!-- GET STARTED -->
     <section class="section-alt" id="start">
       <div class="container">
-        <div class="section-label"><span class="title-gradient">Resources</span></div>
+        <div class="section-label">Resources</div>
         <h2>Get <span class="title-gradient">Started</span></h2>
         <p style="color:var(--text-secondary);margin-bottom:28px;font-size:0.95rem;">Everything you need to use PeerQA in your own research.</p>
 
@@ -981,8 +981,8 @@ example = dataset[<span class="str">"train"</span>][<span class="num">0</span>]
     <!-- CITATION -->
     <section class="section" id="citation">
       <div class="container">
-        <div class="section-label"><span class="title-gradient">Reference</span></div>
-        <h2>Citation</h2>
+        <div class="section-label">Reference</div>
+        <h2><span class="title-gradient">Citation</span></h2>
         <p class="cite-intro">If you use PeerQA in your research, please cite our paper:</p>
         <div class="bibtex-wrapper">
           <button class="copy-btn" onclick="copyBibtex()" aria-label="Copy BibTeX">
