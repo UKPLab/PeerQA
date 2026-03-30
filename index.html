@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeerQA: A Scientific Question Answering Dataset from Peer Reviews</title>
+  <meta name="description" content="PeerQA: 579 QA pairs from 208 academic papers, sourced from peer reviews. Questions by reviewers, answers by authors. NAACL 2025 Outstanding Paper Award.">
+  <meta name="keywords" content="PeerQA, question answering, peer review, scientific QA, evidence retrieval, answer generation, NAACL 2025, NLP dataset">
+  <meta name="author" content="Tim Baumgärtner, Ted Briscoe, Iryna Gurevych">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="theme-color" content="#1e3a5f">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="UKP Lab - Technical University of Darmstadt">
+  <meta property="og:title" content="PeerQA: A Scientific Question Answering Dataset from Peer Reviews">
+  <meta property="og:description" content="579 QA pairs from 208 academic papers, sourced from peer reviews. NAACL 2025 Outstanding Paper Award.">
+  <meta property="og:url" content="https://ukplab.github.io/PeerQA">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@UKPLab">
+  <meta name="twitter:title" content="PeerQA: A Scientific Question Answering Dataset from Peer Reviews">
+  <meta name="twitter:description" content="579 QA pairs from 208 papers. Questions from peer reviews, answers by authors. NAACL 2025 Outstanding Paper Award.">
+
+  <meta name="citation_title" content="PeerQA: A Scientific Question Answering Dataset from Peer Reviews">
+  <meta name="citation_author" content="Baumgärtner, Tim">
+  <meta name="citation_author" content="Briscoe, Ted">
+  <meta name="citation_author" content="Gurevych, Iryna">
+  <meta name="citation_publication_date" content="2025/04">
+  <meta name="citation_conference_title" content="NAACL 2025">
+  <meta name="citation_pdf_url" content="https://aclanthology.org/2025.naacl-long.22.pdf">
+  <meta name="citation_arxiv_id" content="2502.13668">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128220;</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PeerQA: A Scientific Question Answering Dataset from Peer Reviews",
+    "description": "579 QA pairs from 208 academic papers, with questions sourced from peer reviews and answers annotated by paper authors.",
+    "author": [
+      { "@type": "Person", "name": "Tim Baumgärtner", "affiliation": { "@type": "Organization", "name": "UKP Lab, Technical University of Darmstadt" } },
+      { "@type": "Person", "name": "Ted Briscoe", "affiliation": { "@type": "Organization", "name": "Mohamed bin Zayed University of Artificial Intelligence" } },
+      { "@type": "Person", "name": "Iryna Gurevych", "affiliation": { "@type": "Organization", "name": "UKP Lab, Technical University of Darmstadt" } }
+    ],
+    "datePublished": "2025-04",
+    "publisher": { "@type": "Organization", "name": "Association for Computational Linguistics" },
+    "url": "https://ukplab.github.io/PeerQA",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+  <style>
+    :root {
+      --accent: #1e3a5f;
+      --accent-light: #3b6ea5;
+      --accent-wash: #eef3f9;
+      --accent-dark: #142a45;
+      --teal: #0d9488;
+      --teal-wash: #f0fdfa;
+      --amber: #d97706;
+      --text: #1e293b;
+      --text-secondary: #64748b;
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.05rem; line-height: 1.7; color: var(--text);
+      background: var(--bg); -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+
+    /* ==================== BASE CARD ==================== */
+    .card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm); transition: all 0.25s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    /* ==================== GRID UTILS ==================== */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+    /* ==================== SCROLL TO TOP ==================== */
+    .scroll-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 50;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--accent); color: #fff; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 4px 16px rgba(30,58,95,0.3);
+      opacity: 0; transform: translateY(10px); transition: all 0.3s;
+      font-size: 0.85rem;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); }
+    .scroll-top:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+    /* ==================== NAV ==================== */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226,232,240,0.7); transition: box-shadow 0.3s;
+    }
+    .topnav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .topnav-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between; height: 48px;
+    }
+    .topnav-title {
+      font-family: 'Playfair Display', serif; font-size: 0.88rem; font-weight: 700;
+      color: var(--text); white-space: nowrap; text-decoration: none;
+    }
+    .topnav-links { display: flex; gap: 4px; list-style: none; }
+    .topnav-links a {
+      font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); text-decoration: none;
+      padding: 6px 12px; border-radius: 8px; transition: all 0.2s;
+    }
+    .topnav-links a:hover { color: var(--accent); background: var(--accent-wash); }
+    .topnav-links a.nav-active {
+      background: linear-gradient(135deg, var(--accent), #3b6ea5, var(--teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    @media (max-width: 600px) {
+      .topnav-title { display: none; }
+      .topnav-links a { padding: 6px 8px; font-size: 0.72rem; }
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+      position: relative; padding: 64px 0 48px; text-align: center; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(30,58,95,0.07), transparent),
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(51,111,162,0.06), transparent),
+        radial-gradient(ellipse 50% 40% at 10% 60%, rgba(217,119,6,0.04), transparent);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; }
+    .venue-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--accent), #3b6ea5);
+      color: #fff; font-size: 1.05rem; font-weight: 700; padding: 12px 32px;
+      border-radius: 100px; margin-bottom: 28px; letter-spacing: 1.2px;
+      text-transform: uppercase; box-shadow: 0 4px 20px rgba(30,58,95,0.35);
+    }
+    .venue-badge::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.7);
+    }
+    .paper-title {
+      font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700;
+      color: var(--text); line-height: 1.2; margin-bottom: 12px;
+      max-width: 800px; margin-left: auto; margin-right: auto; letter-spacing: -0.5px;
+    }
+    .title-gradient {
+      background: linear-gradient(135deg, var(--accent), #3b6ea5, var(--teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .award-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #fef9c3, #fef3c7); color: #92400e;
+      border: 1.5px solid #fbbf24; padding: 10px 24px; border-radius: 100px;
+      font-size: 0.88rem; font-weight: 700; margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(217,119,6,0.15);
+    }
+    .award-badge i { color: var(--amber); }
+    .authors { font-size: 1.12rem; margin-bottom: 14px; line-height: 2; }
+    .authors a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .authors a:hover { color: var(--accent-dark); }
+    .authors sup { font-size: 0.65em; margin-left: 1px; color: var(--text-secondary); }
+    .affiliations { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 6px; }
+    .affiliations span { display: inline-block; margin: 0 10px; }
+
+    /* ==================== LINKS ==================== */
+    .links { padding: 20px 0 56px; text-align: center; }
+    .links-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; overflow: visible; }
+    .link-btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px;
+      background: var(--bg); color: var(--text); text-decoration: none; border-radius: 100px;
+      font-size: 0.88rem; font-weight: 600; border: 1.5px solid var(--border);
+      transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    .link-btn:hover {
+      border-color: var(--accent); color: var(--accent); transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(30,58,95,0.15);
+    }
+    .link-btn i { font-size: 1.05rem; opacity: 0.7; }
+    .link-btn:hover i { opacity: 1; }
+    .link-btn-primary {
+      background: var(--accent) !important; color: #fff !important;
+      border-color: var(--accent) !important; box-shadow: 0 2px 12px rgba(30,58,95,0.25);
+    }
+    .link-btn-primary i { opacity: 1 !important; }
+    .link-btn-primary:hover {
+      background: var(--accent-dark) !important; border-color: var(--accent-dark) !important;
+      color: #fff !important; box-shadow: 0 4px 20px rgba(30,58,95,0.35) !important;
+    }
+    @media (max-width: 600px) { .link-btn { padding: 9px 18px; font-size: 0.82rem; } }
+
+    /* ==================== SECTIONS ==================== */
+    .section { padding: 72px 0; }
+    .section-alt { padding: 72px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-label::before { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
+    .section h2, .section-alt h2 {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+      color: var(--text); margin-bottom: 24px; letter-spacing: -0.3px;
+    }
+    .section h3, .section-alt h3, h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+      color: var(--text); margin-bottom: 16px;
+    }
+
+    /* ==================== ABSTRACT ==================== */
+    .abstract-tldr { line-height: 1.85; color: #475569; font-size: 1.08rem; margin-bottom: 16px; }
+    .abstract-full {
+      line-height: 1.85; color: #475569; font-size: 0.95rem;
+      display: none; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border);
+    }
+    .abstract-full.show { display: block; }
+    .abstract-full p { margin-bottom: 12px; }
+    .abstract-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 8px;
+      padding: 6px 16px; font-size: 0.82rem; font-weight: 600; color: var(--accent);
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+    }
+    .abstract-toggle:hover { background: var(--accent-wash); border-color: var(--accent); }
+
+    /* Pipeline diagram */
+    .figure-wrapper {
+      background: linear-gradient(180deg, var(--surface) 0%, #fff 100%);
+      border-radius: 20px; border: 1px solid var(--border);
+      padding: 28px 24px; box-shadow: var(--shadow-md); margin-bottom: 16px;
+    }
+    .pipeline-diagram {
+      display: flex; gap: 0; align-items: stretch;
+    }
+    .pipeline-left {
+      display: flex; flex-direction: column; gap: 0; flex: 3; min-width: 0;
+    }
+    .pipeline-right {
+      display: flex; flex-direction: column; flex: 2; min-width: 0;
+    }
+    .pipeline-h-connector {
+      display: flex; align-items: center; justify-content: center; padding: 0 10px; flex-shrink: 0;
+    }
+    .pipeline-h-connector .conn-h-line { width: 24px; height: 2px; background: linear-gradient(90deg, var(--border), #94a3b8); }
+    .pipeline-h-connector .conn-h-arrow { color: #94a3b8; font-size: 0.6rem; margin-left: -2px; }
+    .phase { border-radius: 14px; overflow: hidden; transition: box-shadow 0.3s; }
+    .phase:hover { box-shadow: var(--shadow-md); }
+    .phase-header {
+      padding: 12px 18px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; display: flex; align-items: center; gap: 10px; color: #fff;
+    }
+    .phase-header .phase-num {
+      width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center; font-size: 0.68rem;
+      font-weight: 700; flex-shrink: 0;
+    }
+    .phase-1 .phase-header { background: linear-gradient(135deg, var(--accent), #3b6ea5); }
+    .phase-2 .phase-header { background: linear-gradient(135deg, var(--teal), #14b8a6); }
+    .phase-3 .phase-header { background: linear-gradient(135deg, #334155, var(--text)); }
+    .phase-body {
+      padding: 18px 18px; background: #fff; border: 1px solid var(--border);
+      border-top: none; border-radius: 0 0 14px 14px; flex: 1;
+    }
+    .phase-connector {
+      display: flex; flex-direction: column; align-items: center; padding: 4px 0;
+    }
+    .phase-connector .conn-line { width: 2px; height: 16px; background: linear-gradient(180deg, var(--border), #94a3b8); }
+    .phase-connector .conn-arrow { color: #94a3b8; font-size: 0.6rem; margin-top: -2px; }
+    .phase-3 .phase-body { display: flex; flex-direction: column; justify-content: center; }
+
+    .review-quote {
+      font-style: italic; color: #475569; line-height: 1.6; font-size: 0.9rem;
+      padding-left: 12px; border-left: 2px solid var(--accent);
+    }
+    .process-steps { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+    .process-step {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.72rem; font-weight: 600; padding: 5px 10px; border-radius: 7px;
+      background: var(--surface); color: var(--text-secondary); border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .process-step i { font-size: 0.65rem; color: var(--accent); }
+    .process-arrow { color: #94a3b8; font-size: 0.6rem; flex-shrink: 0; }
+    .annotate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .annotate-item {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 12px; font-size: 0.82rem;
+    }
+    .annotate-item strong { display: block; font-size: 0.7rem; font-weight: 700; color: var(--accent); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .annotate-item span { color: var(--text-secondary); font-size: 0.78rem; }
+
+    @media (max-width: 768px) {
+      .pipeline-diagram { grid-template-columns: 1fr; }
+      .pipeline-h-connector { padding: 4px 0; }
+      .pipeline-h-connector .conn-h-line { width: 2px; height: 16px; }
+      .pipeline-h-connector .conn-h-arrow { margin-left: 0; margin-top: -2px; }
+      .pipeline-h-connector { flex-direction: column; }
+    }
+
+    /* ==================== STATS ==================== */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .stat-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px 20px; text-align: center; box-shadow: var(--shadow-sm);
+      transition: all 0.25s;
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .stat-number {
+      display: block; font-family: 'JetBrains Mono', monospace; font-size: 2rem;
+      font-weight: 700; color: var(--accent); line-height: 1.2;
+    }
+    .stat-label { display: block; font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px; font-weight: 500; }
+
+    /* ==================== TASKS ==================== */
+    .tasks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .task-card {
+      background: #fff; border-radius: var(--radius); padding: 32px 24px 28px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+      transition: all 0.3s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden;
+    }
+    .task-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity: 0; transition: opacity 0.3s;
+    }
+    .task-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .task-card:hover::before { opacity: 1; }
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 14px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px;
+    }
+    .card-icon.blue { background: var(--accent-wash); color: var(--accent); }
+    .card-icon.teal { background: var(--teal-wash); color: var(--teal); }
+    .card-icon.amber { background: #fffbeb; color: var(--amber); }
+    .task-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .task-card-head .card-icon { margin-bottom: 0; flex-shrink: 0; }
+    .task-card h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0; }
+    .task-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+    button.link-btn { font-family: 'DM Sans', sans-serif; cursor: pointer; background: var(--bg); }
+
+    /* ==================== EXAMPLE ==================== */
+    .example-tabs { display: flex; gap: 0; margin-bottom: 28px; border-bottom: 2px solid var(--border); }
+    .example-tab {
+      padding: 10px 20px; background: none; border: none; font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+    }
+    .example-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .example-tab:hover:not(.active) { color: var(--text); }
+    .example-content { display: none; }
+    .example-content.active { display: block; }
+    .example-flow { display: flex; flex-direction: column; gap: 0; max-width: 720px; margin: 0 auto; }
+    .example-step { opacity: 0; transform: translateY(16px); transition: opacity 0.4s, transform 0.4s; }
+    .example-step.visible { opacity: 1; transform: translateY(0); }
+    .step-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .step-label.green { color: var(--accent); }
+    .step-label.blue { color: #3b82f6; }
+    .step-label.red { color: #ef4444; }
+    .speech-bubble {
+      background: var(--accent-wash); border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px;
+      font-size: 0.95rem; line-height: 1.6; font-style: italic; color: #475569;
+    }
+    .evidence-card {
+      background: #fffef8; border: 1px solid #e8e4d4; border-radius: 12px;
+      padding: 20px; box-shadow: var(--shadow-sm); font-size: 0.92rem; line-height: 1.7; color: #475569;
+    }
+    .evidence-card mark { background: #fef3c7; padding: 1px 4px; border-radius: 3px; }
+    .evidence-card p + p { margin-top: 10px; }
+    .answer-bubble {
+      background: #eff6ff; border-left: 3px solid #3b82f6;
+      border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px;
+      font-size: 0.95rem; line-height: 1.6; color: #475569;
+    }
+    .unanswerable-card {
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+      padding: 28px; text-align: center; color: #991b1b;
+    }
+    .unanswerable-card i { font-size: 1.8rem; opacity: 0.5; margin-bottom: 10px; display: block; }
+    .unanswerable-card .u-title { font-weight: 700; font-size: 1rem; }
+    .unanswerable-card .u-desc { font-size: 0.88rem; margin-top: 4px; color: #b91c1c; opacity: 0.7; }
+    .flow-connector { display: flex; justify-content: center; padding: 6px 0; color: #94a3b8; font-size: 0.7rem; }
+
+    /* ==================== RESULTS ==================== */
+    .result-block { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+    .result-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .result-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .result-icon {
+      width: 44px; height: 44px; border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .result-icon.blue { background: var(--accent-wash); color: var(--accent); }
+    .result-icon.teal { background: var(--teal-wash); color: var(--teal); }
+    .result-icon.amber { background: #fffbeb; color: var(--amber); }
+    .result-header h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0; }
+    .result-setup { color: #475569; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.7; }
+    .result-finding {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: #fffbeb; border-left: 4px solid var(--amber);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 24px; margin-bottom: 24px;
+    }
+    .result-finding i { color: var(--amber); margin-top: 3px; flex-shrink: 0; font-size: 1.1rem; }
+    .result-finding p { font-size: 0.88rem; line-height: 1.6; color: var(--text); }
+    .result-finding strong { color: #92400e; }
+
+    .bias-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .bias-card {
+      padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); background: #fff; box-shadow: var(--shadow-sm);
+    }
+    .bias-card h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .bias-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; }
+    .bias-card.bias-unanswerable { border-top: 3px solid #6366f1; }
+    .bias-card.bias-unanswerable h4 { color: #4f46e5; }
+    .bias-card.bias-answerable { border-top: 3px solid var(--amber); }
+    .bias-card.bias-answerable h4 { color: #b45309; }
+
+    .gen-metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .gen-metric-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px 16px; text-align: center; box-shadow: var(--shadow-sm);
+    }
+    .gen-metric-card .metric-name { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: 4px; }
+    .gen-metric-card .metric-value { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+    .gen-metric-card .metric-model { font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px; }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      border-radius: var(--radius); box-shadow: var(--shadow-md);
+      border: 1px solid var(--border); background: #fff;
+    }
+    .table-wrapper table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .table-wrapper thead th {
+      background: var(--text); color: #fff; font-weight: 600; padding: 14px 18px;
+      text-align: left; white-space: nowrap; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .table-wrapper thead th:not(:first-child) { text-align: center; }
+    .table-wrapper tbody td { padding: 12px 18px; border-bottom: 1px solid var(--border); }
+    .table-wrapper tbody td:not(:first-child) { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+    .table-wrapper tbody tr:last-child td { border-bottom: none; }
+    .table-wrapper tbody tr:hover { background: var(--surface); }
+    .table-wrapper tbody td:first-child { font-weight: 600; white-space: nowrap; color: var(--text); }
+    .best { font-weight: 800 !important; }
+    .runner-up { text-decoration: underline; }
+    .arch-tag {
+      display: inline-block; font-size: 0.68rem; padding: 2px 8px; border-radius: 4px;
+      background: var(--surface); color: var(--text-secondary); font-weight: 600;
+    }
+    .table-label { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .table-note { font-size: 0.82rem; color: var(--text-secondary); margin-top: 14px; }
+
+    /* ==================== GET STARTED ==================== */
+    .resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .resource-card { padding: 28px 20px; position: relative; overflow: hidden; }
+    .resource-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity: 0; transition: opacity 0.3s;
+    }
+    .resource-card:hover::before { opacity: 1; }
+    .resource-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .resource-card-head .card-icon { flex-shrink: 0; margin-bottom: 0; }
+    .resource-card h4 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); margin: 0; }
+    .resource-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .resource-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .resource-card a:hover { color: var(--accent-dark); }
+    .card-icon.ci-amber { background: #fffbeb; color: var(--amber); }
+    .card-icon.ci-dark { background: #f1f5f9; color: var(--text); }
+    .card-icon.ci-blue { background: var(--accent-wash); color: var(--accent-light); }
+    .code-block {
+      background: #1e1e2e; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-lg); margin-top: 8px;
+    }
+    .code-block-header {
+      background: #2a2a3e; padding: 10px 20px; display: flex; align-items: center; gap: 8px;
+    }
+    .code-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .code-dot.red { background: #ff5f57; }
+    .code-dot.yellow { background: #ffbd2e; }
+    .code-dot.green { background: #27c93f; }
+    .code-block pre {
+      padding: 20px 24px; overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.84rem;
+      line-height: 1.7; color: #e2e8f0; margin: 0;
+    }
+    .code-block .kw { color: #c678dd; }
+    .code-block .fn { color: #61afef; }
+    .code-block .str { color: #98c379; }
+    .code-block .cm { color: #5c6370; font-style: italic; }
+    .code-block .num { color: #d19a66; }
+    .start-note { font-size: 0.82rem; color: var(--text-secondary); margin-top: 12px; }
+    .start-note a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    @media (max-width: 768px) { .resource-grid { grid-template-columns: 1fr; } }
+
+    /* ==================== BIBTEX ==================== */
+    .bibtex-wrapper {
+      position: relative; background: var(--text); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow-lg);
+    }
+    .bibtex-wrapper pre {
+      padding: 28px; overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+      line-height: 1.7; color: #e2e8f0; margin: 0;
+    }
+    .copy-btn {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 10px;
+      padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; gap: 6px; transition: all 0.25s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); }
+    .copy-btn.copied { background: rgba(16,185,129,0.3); border-color: rgba(16,185,129,0.5); color: #6ee7b7; }
+    .cite-intro { color: var(--text-secondary); margin-bottom: 18px; font-size: 0.95rem; }
+
+    /* ==================== FOOTER ==================== */
+    footer { background: var(--text); color: #e2e8f0; padding: 48px 0; text-align: center; }
+    .footer-links {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; margin-bottom: 24px;
+    }
+    .footer-links a {
+      color: #cbd5e1; text-decoration: none; font-size: 0.88rem; font-weight: 500;
+      display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-divider { width: 40px; height: 1px; background: #334155; margin: 0 auto 20px; }
+    .footer-note { font-size: 0.78rem; color: #64748b; }
+    .footer-note a { color: #94a3b8; text-decoration: none; }
+    .footer-note a:hover { color: #e2e8f0; }
+
+    /* ==================== ANIMATIONS ==================== */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+
+    /* ==================== SLIDE MODE ==================== */
+    .slide-toggle-btn {
+      background: none; border: 1px solid var(--border); border-radius: 8px;
+      padding: 5px 10px; cursor: pointer; color: var(--text-secondary);
+      font-size: 0.78rem; transition: all 0.2s; display: flex; align-items: center;
+      margin-left: 8px; gap: 5px; font-family: 'DM Sans', sans-serif; font-weight: 600;
+    }
+    .slide-toggle-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
+    .slide-controls {
+      display: none; position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+      z-index: 200; background: rgba(26,26,46,0.92); backdrop-filter: blur(12px);
+      border-radius: 100px; padding: 8px 20px; gap: 16px; align-items: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .slide-progress { display: flex; align-items: center; gap: 3px; }
+    .slide-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.2);
+      cursor: pointer; transition: all 0.25s; position: relative;
+    }
+    .slide-dot:hover { background: rgba(255,255,255,0.5); transform: scale(1.3); }
+    .slide-dot.dot-active { background: #fff; width: 24px; border-radius: 4px; }
+    .slide-dot-tip {
+      display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+      background: var(--text); color: #fff; font-size: 0.6rem; font-weight: 600;
+      padding: 3px 8px; border-radius: 5px; white-space: nowrap; margin-bottom: 8px;
+      font-family: 'DM Sans', sans-serif; pointer-events: none;
+    }
+    .slide-dot:hover .slide-dot-tip { display: block; }
+    .slide-nav-btn {
+      background: none; border: none; color: #94a3b8; cursor: pointer;
+      font-size: 1rem; padding: 6px 10px; border-radius: 8px; transition: all 0.2s;
+    }
+    .slide-nav-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .slide-exit-btn { margin-left: 4px; border-left: 1px solid rgba(255,255,255,0.15); padding-left: 14px; }
+
+    body.slide-mode { overflow: hidden; }
+    body.slide-mode .topnav {
+      background: rgba(26,26,46,0.95); backdrop-filter: blur(16px);
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+    body.slide-mode .topnav-title { color: #e2e8f0; }
+    body.slide-mode .topnav-inner { justify-content: flex-start; gap: 16px; }
+    body.slide-mode .topnav-links { display: none; }
+    body.slide-mode .slide-toggle-btn { color: #e2e8f0; border-color: rgba(255,255,255,0.2); margin-left: auto; }
+    body.slide-mode .slide-toggle-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    body.slide-mode .slide-controls { display: flex; }
+    body.slide-mode .scroll-top { display: none !important; }
+    body.slide-mode footer { display: none; }
+
+    body.slide-mode section.hero,
+    body.slide-mode section.links,
+    body.slide-mode .section,
+    body.slide-mode .section-alt {
+      position: fixed; top: 48px; left: 0; right: 0;
+      height: calc(100vh - 48px); overflow-y: auto;
+      display: flex; align-items: flex-start; justify-content: center;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      transform: translateX(30px); z-index: 50; padding: 48px 0 80px;
+      background: var(--bg);
+    }
+    body.slide-mode .section-alt { background: var(--bg); border: none; }
+    body.slide-mode .section { background: var(--bg); }
+    body.slide-mode section.hero { text-align: center; padding-top: 0; padding-bottom: 0; align-items: center; }
+    body.slide-mode .section .container,
+    body.slide-mode .section-alt .container { max-width: 1100px; }
+    body.slide-mode section.hero::before { display: none; }
+    body.slide-mode section.hero .container { position: static; }
+    body.slide-mode section.links {
+      height: auto; padding: 0; background: transparent; top: auto; bottom: 18vh;
+    }
+    body.slide-mode section.slide-active {
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(0);
+    }
+    body.slide-mode section.slide-exit-left { opacity: 0; transform: translateX(-30px); }
+    body.slide-mode section.slide-exit-right { opacity: 0; transform: translateX(30px); }
+    body.slide-mode .fade-up { opacity: 1 !important; transform: none !important; }
+
+    body.slide-mode .section,
+    body.slide-mode .section-alt { padding: 32px 0 70px; }
+    body.slide-mode .section h2,
+    body.slide-mode .section-alt h2 { margin-bottom: 14px; font-size: 1.7rem; }
+    body.slide-mode .figure-wrapper { padding: 10px 8px; margin-bottom: 6px; }
+
+    @media (max-width: 768px) {
+      body.slide-mode section.hero,
+      body.slide-mode .section,
+      body.slide-mode .section-alt { align-items: flex-start; padding: 20px 0; }
+      .slide-controls { bottom: 16px; padding: 6px 14px; gap: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+      .fade-up { opacity: 1; transform: none; }
+      .example-step { opacity: 1; transform: none; }
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .paper-title { font-size: 1.85rem; }
+      .hero { padding: 60px 0 32px; }
+      .section, .section-alt { padding: 48px 0; }
+      .section h2 { font-size: 1.6rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .tasks-grid { grid-template-columns: 1fr; }
+      .bias-grid { grid-template-columns: 1fr; }
+      .gen-metrics-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .paper-title { font-size: 1.5rem; }
+      .container { padding: 0 18px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .gen-metrics-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="topnav" id="topnav">
+    <div class="topnav-inner">
+      <a href="#" class="topnav-title">PeerQA</a>
+      <div class="topnav-links">
+        <a href="#abstract" data-section="abstract">Abstract</a>
+        <a href="#data" data-section="data">Data</a>
+        <a href="#example" data-section="example">Example</a>
+        <a href="#tasks" data-section="tasks">Tasks</a>
+        <a href="#results" data-section="results">Results</a>
+        <a href="#start" data-section="start">Start</a>
+        <a href="#citation" data-section="citation">Cite</a>
+      </div>
+      <button class="slide-toggle-btn" id="slideToggle" onclick="toggleSlideMode()" title="Presentation mode">
+        <i class="fa-solid fa-display"></i> <span class="slide-toggle-label">Slides</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="paper-title"><span class="title-gradient">PeerQA:</span> A Scientific Question Answering Dataset from Peer Reviews</h1>
+      <div class="award-badge"><i class="fa-solid fa-trophy"></i> NAACL 2025 &middot; Outstanding Paper Award</div>
+      <div class="authors">
+        <a href="mailto:tim.baumgaertner@tu-darmstadt.de">Tim Baumg&auml;rtner</a><sup>1,2</sup>,
+        <a href="#">Ted Briscoe</a><sup>2</sup>,
+        <a href="#">Iryna Gurevych</a><sup>1,2</sup>
+      </div>
+      <div class="affiliations">
+        <span><sup>1</sup> UKP Lab, TU Darmstadt &amp; hessian.AI</span>
+        <span><sup>2</sup> Mohamed bin Zayed University of AI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section class="links">
+    <div class="container">
+      <div class="links-row">
+        <a href="https://aclanthology.org/2025.naacl-long.22/" class="link-btn link-btn-primary" target="_blank"><i class="fa-solid fa-file-lines"></i> Paper</a>
+        <a href="http://arxiv.org/abs/2502.13668" class="link-btn" target="_blank"><i class="ai ai-arxiv"></i> ArXiv</a>
+        <a href="https://github.com/UKPLab/PeerQA" class="link-btn" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+        <a href="https://huggingface.co/datasets/UKPLab/PeerQA" class="link-btn" target="_blank"><i class="fa-solid fa-database"></i> Dataset</a>
+        <a href="https://drive.google.com/file/d/1aZOa45OwATr38hblG5avPiWMSbg_XFB6/view" class="link-btn" target="_blank"><i class="fa-solid fa-play"></i> Video</a>
+        <a href="https://drive.google.com/file/d/1XKHfqxtp_B6zqOPvXKuwbMcrMblulB-m/view" class="link-btn" target="_blank"><i class="fa-solid fa-display"></i> Slides</a>
+        <button class="link-btn" onclick="copyBibtex()"><i class="fa-solid fa-quote-left"></i> <span class="hero-cite-text">Cite</span></button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- ABSTRACT -->
+    <section class="section-alt" id="abstract">
+      <div class="container">
+        <div class="section-label">Summary</div>
+        <h2><span class="title-gradient">TL;DR</span></h2>
+
+        <!-- Pipeline diagram: wide, horizontal layout -->
+        <div class="figure-wrapper">
+        <div class="pipeline-diagram">
+          <div class="pipeline-left">
+            <div class="phase phase-1">
+              <div class="phase-header"><span class="phase-num">1</span> Peer Review</div>
+              <div class="phase-body">
+                <div class="review-quote">&ldquo;Can the authors provide an explanation for the significant performance difference?&rdquo;</div>
+              </div>
+            </div>
+            <div class="phase-connector"><div class="conn-arrow"><i class="fa-solid fa-chevron-down"></i></div></div>
+            <div class="phase phase-2">
+              <div class="phase-header"><span class="phase-num">2</span> Question Processing</div>
+              <div class="phase-body">
+                <div class="process-steps">
+                  <span class="process-step"><i class="fa-solid fa-broom"></i> Clean</span>
+                  <span class="process-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  <span class="process-step"><i class="fa-solid fa-expand"></i> Decontextualize</span>
+                  <span class="process-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  <span class="process-step"><i class="fa-solid fa-scissors"></i> Decompose</span>
+                  <span class="process-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  <span class="process-step"><i class="fa-solid fa-filter"></i> Filter</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pipeline-h-connector">
+            <div class="conn-h-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+          </div>
+
+          <div class="pipeline-right">
+            <div class="phase phase-3" style="flex:1; display:flex; flex-direction:column">
+              <div class="phase-header"><span class="phase-num">3</span> Expert Annotations</div>
+              <div class="phase-body">
+                <div class="annotate-grid">
+                  <div class="annotate-item"><strong>Quality Check</strong><span>Verify question clarity</span></div>
+                  <div class="annotate-item"><strong>Answerability</strong><span>Answerable from paper?</span></div>
+                  <div class="annotate-item"><strong>Evidence</strong><span>Highlight relevant text</span></div>
+                  <div class="annotate-item"><strong>Free-Form Answer</strong><span>Write the answer</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- Abstract text below -->
+        <p class="abstract-tldr">PeerQA is a <strong>scientific QA dataset</strong> where questions come from real <strong>peer reviews</strong> and answers are annotated by the <strong>paper authors</strong> themselves. It contains <strong>579 QA pairs</strong> across <strong>208 papers</strong> spanning ML, NLP, Geoscience, and Public Health, supporting three tasks: <strong>evidence retrieval</strong>, <strong>answerability classification</strong>, and <strong>answer generation</strong>.</p>
+        <button class="abstract-toggle" onclick="toggleAbstract()">
+          <i class="fa-solid fa-chevron-down" style="font-size:0.65rem; margin-right:4px"></i> Full abstract
+        </button>
+        <div class="abstract-full" id="abstract-full">
+          <p>We present PeerQA, a real-world, scientific, document-level Question Answering (QA) dataset. PeerQA questions have been sourced from peer reviews, which contain questions that reviewers raised while thoroughly examining the scientific article. Answers have been annotated by the original authors of each paper.</p>
+          <p>The dataset contains 579 QA pairs from 208 academic articles, with a majority from ML and NLP, as well as subsets from other scientific communities like Geoscience and Public Health. PeerQA supports three critical tasks for developing practical QA systems: Evidence Retrieval, Unanswerable Question Classification, and Answer Generation.</p>
+          <p>We provide a detailed analysis of the collected data and conduct experiments establishing baseline systems for all three tasks. Our experiments and analyses reveal the need for decontextualization in document-level retrieval, where we find that even simple decontextualization approaches consistently improve retrieval performance across architectures.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section" id="data">
+      <div class="container">
+        <div class="section-label">Dataset</div>
+        <h2>At a <span class="title-gradient">Glance</span></h2>
+        <div class="stats-grid">
+          <div class="stat-card fade-up"><span class="stat-number" data-target="579">0</span><span class="stat-label">Labeled QA Pairs</span></div>
+          <div class="stat-card fade-up stagger-1"><span class="stat-number" data-target="208">0</span><span class="stat-label">Academic Papers</span></div>
+          <div class="stat-card fade-up stagger-2"><span class="stat-number" data-target="12" data-suffix="k">0</span><span class="stat-label">Unlabeled Questions</span></div>
+          <div class="stat-card fade-up"><span class="stat-number" data-target="12" data-suffix="k" data-prefix="~">0</span><span class="stat-label">Avg. Paper Length (tokens)</span></div>
+          <div class="stat-card fade-up stagger-1"><span class="stat-number" data-target="11">0</span><span class="stat-label">Source Venues</span></div>
+          <div class="stat-card fade-up stagger-2"><span class="stat-number" data-target="4">0</span><span class="stat-label">Scientific Domains</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAMPLE -->
+    <section class="section-alt" id="example">
+      <div class="container">
+        <div class="section-label">Example</div>
+        <h2><span class="title-gradient">PeerQA</span> Examples</h2>
+        <div class="example-tabs">
+          <button class="example-tab active" data-tab="answerable">Answerable</button>
+          <button class="example-tab" data-tab="unanswerable">Unanswerable</button>
+        </div>
+        <div class="example-content active" id="tab-answerable">
+          <div class="example-flow">
+            <div class="example-step"><div class="step-label green">Reviewer Question</div><div class="speech-bubble">&ldquo;Are the annotators of the test sets native English speakers?&rdquo;</div></div>
+            <div class="flow-connector"><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="example-step">
+              <div class="step-label blue">Evidence from Paper</div>
+              <div class="evidence-card">
+                <p>&ldquo;<mark>All were annotated by three annotators, each of whom was a native speaker of English</mark> and a linguist with experience with AMR.&rdquo;</p>
+                <p>&ldquo;A total of nine annotators participated in this evaluation. <mark>Six of the annotators were native English speakers</mark>; all were either current or former PhD students or professors at our university.&rdquo;</p>
+              </div>
+            </div>
+            <div class="flow-connector"><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="example-step"><div class="step-label green">Author's Answer</div><div class="answer-bubble">&ldquo;In the pilot, all 3 annotators were native English speakers. For the main evaluation, 6 out of 9 annotators were native English speakers.&rdquo;</div></div>
+          </div>
+        </div>
+        <div class="example-content" id="tab-unanswerable">
+          <div class="example-flow">
+            <div class="example-step"><div class="step-label green">Reviewer Question</div><div class="speech-bubble">&ldquo;What is the average length of character-chains and non-character-chains?&rdquo;</div></div>
+            <div class="flow-connector"><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="example-step">
+              <div class="unanswerable-card">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <div class="u-title">Unanswerable</div>
+                <div class="u-desc">The paper does not contain sufficient information to answer this question.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+    <section class="section" id="tasks">
+      <div class="container">
+        <div class="section-label">Benchmark</div>
+        <h2>Three <span class="title-gradient">Tasks</span></h2>
+        <div class="tasks-grid">
+          <div class="task-card fade-up">
+            <div class="task-card-head">
+              <div class="card-icon blue"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <h3>Evidence Retrieval</h3>
+            </div>
+            <p>Given a question and a paper, retrieve the sentences or paragraphs containing evidence relevant to answering the question.</p>
+          </div>
+          <div class="task-card fade-up stagger-1">
+            <div class="task-card-head">
+              <div class="card-icon teal"><i class="fa-solid fa-circle-question"></i></div>
+              <h3>Answerability Classification</h3>
+            </div>
+            <p>Determine whether a question can be answered from the information in the paper, or is unanswerable due to insufficient evidence.</p>
+          </div>
+          <div class="task-card fade-up stagger-2">
+            <div class="task-card-head">
+              <div class="card-icon amber"><i class="fa-solid fa-pen-fancy"></i></div>
+              <h3>Answer Generation</h3>
+            </div>
+            <p>Generate a natural language answer to the question, grounded in the evidence retrieved from the scientific paper.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section-alt" id="results">
+      <div class="container">
+        <div class="section-label">Experiments</div>
+        <h2><span class="title-gradient">Results</span></h2>
+
+        <!-- Task 1 -->
+        <div class="result-block fade-up">
+          <div class="result-header"><div class="result-icon blue"><i class="fa-solid fa-magnifying-glass"></i></div><h3>Evidence Retrieval</h3></div>
+          <p class="result-setup">Given a question, retrieve relevant passages from the full paper. We evaluate cross-encoder, dense, multi-vector dense, and sparse retrieval models at paragraph and sentence granularity.</p>
+          <div class="result-finding"><i class="fa-solid fa-lightbulb"></i><p><strong>Key finding:</strong> Simply prepending the paper title to passages (<em>decontextualization</em>) consistently improves retrieval performance across all model architectures.</p></div>
+          <div class="table-label">Paragraph-Level Retrieval</div>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>Model</th><th>Architecture</th><th>MRR</th><th>MRR (+Title)</th><th>Recall@10</th><th>R@10 (+Title)</th></tr></thead>
+              <tbody>
+                <tr><td>MiniLM-L12-v2</td><td><span class="arch-tag">Cross-Encoder</span></td><td class="best">0.4723</td><td class="runner-up">0.4839</td><td>0.6467</td><td>0.6709</td></tr>
+                <tr><td>Dragon+</td><td><span class="arch-tag">Dense</span></td><td class="runner-up">0.4657</td><td class="best">0.4845</td><td>0.6563</td><td class="best">0.6817</td></tr>
+                <tr><td>SPLADEv3</td><td><span class="arch-tag">Sparse</span></td><td>0.4536</td><td>0.4725</td><td class="best">0.6661</td><td class="runner-up">0.6851</td></tr>
+                <tr><td>ColBERTv2</td><td><span class="arch-tag">Multi-Dense</span></td><td>0.4368</td><td>0.4122</td><td>0.6287</td><td>0.6371</td></tr>
+                <tr><td>BM25</td><td><span class="arch-tag">Sparse</span></td><td>0.4288</td><td>&mdash;</td><td>0.6388</td><td>&mdash;</td></tr>
+                <tr><td>Contriever-MS</td><td><span class="arch-tag">Dense</span></td><td>0.4095</td><td>0.4408</td><td>0.6160</td><td>0.6314</td></tr>
+                <tr><td>GTR-XL</td><td><span class="arch-tag">Dense</span></td><td>0.3955</td><td>0.4142</td><td>0.5940</td><td>0.6122</td></tr>
+                <tr><td>Contriever</td><td><span class="arch-tag">Dense</span></td><td>0.3494</td><td>0.3624</td><td>0.5567</td><td>0.5340</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note"><strong>Bold</strong> = best, <span style="text-decoration:underline">underline</span> = runner-up. +Title = decontextualization by prepending the paper title.</p>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="result-block fade-up">
+          <div class="result-header"><div class="result-icon teal"><i class="fa-solid fa-circle-question"></i></div><h3>Answerability Classification</h3></div>
+          <p class="result-setup">Given a question and context, classify whether the question is answerable from the paper. We evaluate instruction-tuned LLMs (Llama-3, Mistral, Command-R, GPT-3.5, GPT-4o) with gold passages, RAG top-k, and full text. We report macro-F1 to account for class imbalance (383 answerable vs. 112 unanswerable).</p>
+          <div class="result-finding"><i class="fa-solid fa-lightbulb"></i><p><strong>Key finding:</strong> All models exhibit systematic bias toward one class, making answerability classification a challenging and unsolved problem on PeerQA. Command-R and GPT-4o provide the best trade-off, achieving the highest macro-F1.</p></div>
+          <div class="bias-grid">
+            <div class="bias-card bias-unanswerable"><h4><i class="fa-solid fa-arrow-down" style="margin-right:4px"></i> Bias toward &ldquo;Unanswerable&rdquo;</h4><p><strong>Llama</strong> and <strong>GPT</strong> models tend to predict unanswerable, with high recall on that class but low recall on answerable questions.</p></div>
+            <div class="bias-card bias-answerable"><h4><i class="fa-solid fa-arrow-up" style="margin-right:4px"></i> Bias toward &ldquo;Answerable&rdquo;</h4><p><strong>Mistral</strong> and <strong>Command-R</strong> tend to predict answerable, with high recall there but low recall on unanswerable questions.</p></div>
+          </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="result-block fade-up">
+          <div class="result-header"><div class="result-icon amber"><i class="fa-solid fa-pen-fancy"></i></div><h3>Answer Generation</h3></div>
+          <p class="result-setup">Given a question and context, generate a free-form answer. We evaluate Llama-3 (8k, 32k), Mistral (32k), Command-R (128k), GPT-3.5 (16k), and GPT-4o (128k) with gold evidence, RAG top-k passages, and the full paper text. We measure ROUGE-L, AlignScore, and Prometheus Correctness (LLM-as-judge, scale 1&ndash;5).</p>
+          <div class="result-finding"><i class="fa-solid fa-lightbulb"></i><p><strong>Key finding:</strong> Providing the model with top passages from a retriever (RAG) outperforms providing the full paper text, despite LLMs' large context windows. Gold evidence provides an upper bound, and increased retrieval performance correlates with improved generation.</p></div>
+          <div class="bias-grid">
+            <div class="bias-card" style="border-top: 3px solid var(--accent)"><h4 style="color:var(--accent)"><i class="fa-solid fa-filter" style="margin-right:4px"></i> RAG beats Full-Text</h4><p>Models perform better with top retrieved passages than with the entire paper as context, showing that a retriever filtering relevant information is more effective than relying on the LLM's internal attention.</p></div>
+            <div class="bias-card" style="border-top: 3px solid var(--teal)"><h4 style="color:var(--teal)"><i class="fa-solid fa-star" style="margin-right:4px"></i> GPT-4o: The Exception</h4><p>GPT-4o uniquely shows stable performance with increasing context length, demonstrating advanced long-context capabilities. It is the most recent and powerful model in the evaluation.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET STARTED -->
+    <section class="section" id="start">
+      <div class="container">
+        <div class="section-label">Resources</div>
+        <h2>Get <span class="title-gradient">Started</span></h2>
+        <p style="color:var(--text-secondary);margin-bottom:28px;font-size:0.95rem;">Everything you need to use PeerQA in your own research.</p>
+
+        <div class="resource-grid fade-up">
+          <div class="card resource-card">
+            <div class="resource-card-head"><div class="card-icon ci-amber"><i class="fa-solid fa-database"></i></div><h4>Dataset</h4></div>
+            <p>Available on <a href="https://huggingface.co/datasets/UKPLab/PeerQA" target="_blank">Hugging Face</a> — 579 QA pairs from 208 papers, ready to load with one line of Python.</p>
+          </div>
+          <div class="card resource-card">
+            <div class="resource-card-head"><div class="card-icon ci-dark"><i class="fa-brands fa-github"></i></div><h4>Code</h4></div>
+            <p>Full codebase for data processing, retrieval, classification, and generation experiments on <a href="https://github.com/UKPLab/PeerQA" target="_blank">GitHub</a>.</p>
+          </div>
+          <div class="card resource-card">
+            <div class="resource-card-head"><div class="card-icon ci-blue"><i class="fa-solid fa-file-lines"></i></div><h4>Paper</h4></div>
+            <p>The full methodology, dataset analysis, and all baselines are described in the <a href="https://aclanthology.org/2025.naacl-long.22/" target="_blank">ACL Anthology paper</a>.</p>
+          </div>
+        </div>
+
+        <div class="code-block fade-up">
+          <div class="code-block-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+          </div>
+          <pre><span class="kw">from</span> datasets <span class="kw">import</span> load_dataset
+
+<span class="cm"># Load PeerQA from Hugging Face Hub</span>
+dataset = <span class="fn">load_dataset</span>(<span class="str">"UKPLab/PeerQA"</span>)
+
+<span class="cm"># Access the labeled QA pairs (579 examples)</span>
+example = dataset[<span class="str">"train"</span>][<span class="num">0</span>]
+<span class="fn">print</span>(<span class="str">f"Question: </span>{example[<span class="str">'question'</span>]}<span class="str">"</span>)
+<span class="fn">print</span>(<span class="str">f"Evidence: </span>{example[<span class="str">'answer_evidence_sent'</span>]}<span class="str">"</span>)
+<span class="fn">print</span>(<span class="str">f"Answer:   </span>{example[<span class="str">'free_form_answer'</span>]}<span class="str">"</span>)</pre>
+        </div>
+        <p class="start-note">See the <a href="https://github.com/UKPLab/PeerQA" target="_blank">GitHub README</a> for full setup instructions, experiment reproduction, and data format documentation.</p>
+      </div>
+    </section>
+
+    <!-- CITATION -->
+    <section class="section-alt" id="citation">
+      <div class="container">
+        <div class="section-label">Reference</div>
+        <h2><span class="title-gradient">Citation</span></h2>
+        <p class="cite-intro">If you use PeerQA in your research, please cite our paper:</p>
+        <div class="bibtex-wrapper">
+          <button class="copy-btn" onclick="copyBibtex()" aria-label="Copy BibTeX">
+            <i class="fa-regular fa-copy"></i> <span class="copy-text">Copy</span>
+          </button>
+          <pre id="bibtex-code">@inproceedings{baumgartner-etal-2025-peerqa,
+    title = {{PeerQA: A Scientific Question Answering Dataset from Peer Reviews}},
+    author = "Baumg{\"a}rtner, Tim  and Briscoe, Ted  and Gurevych, Iryna",
+    booktitle = "Proceedings of the 2025 Conference of the Nations of the Americas
+                 Chapter of the Association for Computational Linguistics: Human
+                 Language Technologies (Volume 1: Long Papers)",
+    month = apr,
+    year = "2025",
+    address = "Albuquerque, New Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.naacl-long.22/",
+    pages = "508--544",
+}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:tim.baumgaertner@tu-darmstadt.de"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <a href="https://github.com/UKPLab/PeerQA" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://huggingface.co/datasets/UKPLab/PeerQA" target="_blank"><i class="fa-solid fa-database"></i> Dataset</a>
+        <a href="https://www.ukp.tu-darmstadt.de" target="_blank"><i class="fa-solid fa-building-columns"></i> UKP Lab</a>
+        <a href="https://bsky.app/profile/timbmg.bsky.social" target="_blank"><i class="fa-brands fa-bluesky"></i> @timbmg</a>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-note">
+        <a href="https://www.ukp.tu-darmstadt.de">UKP Lab, TU Darmstadt</a> &middot; <a href="https://mbzuai.ac.ae">MBZUAI</a><br>
+        Funded by DFG (QASciInf, GU 798/18-3) and Microsoft Azure.
+      </p>
+    </div>
+  </footer>
+
+  <!-- SLIDE CONTROLS -->
+  <div class="slide-controls" id="slideControls">
+    <button class="slide-nav-btn" onclick="slideNav(-1)" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="slide-progress" id="slideProgress"></div>
+    <button class="slide-nav-btn" onclick="slideNav(1)" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+    <button class="slide-nav-btn" onclick="slideFontSize(-1)" aria-label="Decrease font"><i class="fa-solid fa-minus"></i></button>
+    <button class="slide-nav-btn" onclick="slideFontSize(1)" aria-label="Increase font"><i class="fa-solid fa-plus"></i></button>
+    <button class="slide-nav-btn slide-exit-btn" onclick="toggleSlideMode()" aria-label="Exit slide mode"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})" aria-label="Scroll to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // NAV SCROLL + SCROLL-TO-TOP
+    const topnav = document.getElementById('topnav');
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      topnav.classList.toggle('scrolled', window.scrollY > 10);
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // NAV ACTIVE SECTION
+    const navLinks = document.querySelectorAll('.topnav-links a');
+    const sectionIds = ['abstract', 'data', 'example', 'tasks', 'results', 'start', 'citation'];
+    const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle('nav-active', link.dataset.section === entry.target.id));
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sectionEls.forEach(el => sectionObserver.observe(el));
+
+    // ABSTRACT TOGGLE
+    function toggleAbstract() {
+      const full = document.getElementById('abstract-full');
+      const btn = document.querySelector('.abstract-toggle');
+      const show = !full.classList.contains('show');
+      full.classList.toggle('show');
+      btn.innerHTML = show
+        ? '<i class="fa-solid fa-chevron-up" style="font-size:0.65rem;margin-right:4px"></i> Hide abstract'
+        : '<i class="fa-solid fa-chevron-down" style="font-size:0.65rem;margin-right:4px"></i> Full abstract';
+    }
+
+    // COUNTER ANIMATION
+    function animateCounters() {
+      document.querySelectorAll('.stat-number').forEach((counter, i) => {
+        const target = parseInt(counter.dataset.target);
+        const suffix = counter.dataset.suffix || '';
+        const prefix = counter.dataset.prefix || '';
+        const duration = 800;
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = prefix + Math.round(eased * target).toLocaleString() + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        setTimeout(() => requestAnimationFrame(update), i * 80);
+      });
+    }
+
+    // SCROLL ANIMATIONS
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+    // Counter observer
+    const statsSection = document.getElementById('data');
+    const statsObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); statsObs.unobserve(entry.target); } });
+    }, { threshold: 0.3 });
+    if (statsSection) statsObs.observe(statsSection);
+
+    // EXAMPLE TABS
+    document.querySelectorAll('.example-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.example-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.example-content').forEach(c => c.classList.remove('active'));
+        const content = document.getElementById('tab-' + tab.dataset.tab);
+        content.classList.add('active');
+        const steps = content.querySelectorAll('.example-step');
+        steps.forEach(s => s.classList.remove('visible'));
+        steps.forEach((s, i) => setTimeout(() => s.classList.add('visible'), i * 250));
+      });
+    });
+
+    // Example scroll trigger
+    const exObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.example-content.active .example-step').forEach((s, i) => {
+            setTimeout(() => s.classList.add('visible'), i * 250);
+          });
+          exObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    const exSection = document.getElementById('example');
+    if (exSection) exObs.observe(exSection);
+
+    // COPY BIBTEX
+    function copyBibtex() {
+      const code = document.getElementById('bibtex-code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        // Update section copy btn
+        const btn = document.querySelector('.copy-btn');
+        if (btn) { btn.classList.add('copied'); btn.querySelector('.copy-text').textContent = 'Copied!';
+          setTimeout(() => { btn.classList.remove('copied'); btn.querySelector('.copy-text').textContent = 'Copy'; }, 2000);
+        }
+        // Update hero cite btn
+        const heroCite = document.querySelector('.hero-cite-text');
+        if (heroCite) { heroCite.textContent = 'Copied!'; setTimeout(() => { heroCite.textContent = 'Cite'; }, 2000); }
+      });
+    }
+    // ==================== SLIDE MODE ====================
+    let slideModeActive = false;
+    let currentSlide = 0;
+    let savedScrollY = 0;
+
+    function getSlides() {
+      const hero = document.querySelector('section.hero');
+      const links = document.querySelector('section.links');
+      const mainSections = Array.from(document.querySelectorAll('main > section'));
+      const slides = [{ elements: [hero, links], label: 'title' }];
+      mainSections.forEach(sec => {
+        if (sec.id === 'results') {
+          const blocks = Array.from(sec.querySelectorAll('.result-block'));
+          blocks.forEach((block, i) => {
+            slides.push({ elements: [sec], label: 'results', resultSubIndex: i, resultBlocks: blocks });
+          });
+        } else {
+          slides.push({ elements: [sec], label: sec.id || 'section' });
+        }
+      });
+      return slides;
+    }
+
+    function toggleSlideMode() {
+      slideModeActive = !slideModeActive;
+      const slides = getSlides();
+      if (slideModeActive) {
+        savedScrollY = window.scrollY;
+        currentSlide = 0;
+        document.body.classList.add('slide-mode');
+        document.querySelector('.slide-toggle-label').textContent = 'Website';
+        document.querySelector('#slideToggle i').className = 'fa-solid fa-globe';
+        const labels = ['Title','Abstract','Data','Examples','Tasks','Retrieval','Answerability','Generation','Get Started','Citation'];
+        const prog = document.getElementById('slideProgress');
+        prog.innerHTML = '';
+        slides.forEach((s, i) => {
+          const dot = document.createElement('div');
+          dot.className = 'slide-dot' + (i === 0 ? ' dot-active' : '');
+          dot.onclick = () => showSlide(i, i > currentSlide ? 'left' : 'right');
+          const tip = document.createElement('div');
+          tip.className = 'slide-dot-tip';
+          tip.textContent = labels[i] || s.label;
+          dot.appendChild(tip);
+          prog.appendChild(dot);
+        });
+        showSlide(currentSlide, 'none');
+      } else {
+        document.body.classList.remove('slide-mode');
+        document.querySelector('.slide-toggle-label').textContent = 'Slides';
+        document.querySelector('#slideToggle i').className = 'fa-solid fa-display';
+        document.querySelectorAll('.result-block').forEach(b => b.style.display = '');
+        slides.forEach(s => s.elements.forEach(el => {
+          el.classList.remove('slide-active', 'slide-exit-left', 'slide-exit-right');
+          el.style.zoom = '';
+        }));
+        slideZoom = 1;
+        document.querySelectorAll('main > section').forEach(el => el.style.zoom = '');
+        document.querySelectorAll('section.hero, section.links').forEach(el => { el.style.transform = ''; });
+        window.scrollTo(0, savedScrollY);
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+
+    function showSlide(index, direction) {
+      const slides = getSlides();
+      if (index < 0 || index >= slides.length) return;
+      const prevSlide = slides[currentSlide];
+      const nextSlide = slides[index];
+      const sameSection = prevSlide && prevSlide.elements[0] === nextSlide.elements[0];
+
+      // Apply result block visibility before animating
+      if (nextSlide.resultBlocks) {
+        nextSlide.resultBlocks.forEach((block, bi) => {
+          block.style.display = bi === nextSlide.resultSubIndex ? '' : 'none';
+        });
+      } else {
+        document.querySelectorAll('.result-block').forEach(b => b.style.display = '');
+      }
+
+      if (!sameSection) {
+        if (direction === 'left' || direction === 'right') {
+          prevSlide.elements.forEach(el => {
+            el.classList.remove('slide-active');
+            el.classList.add(direction === 'left' ? 'slide-exit-left' : 'slide-exit-right');
+          });
+        }
+        slides.forEach(s => s.elements.forEach(el => {
+          if (!sameSection && el !== prevSlide?.elements[0]) {
+            el.classList.remove('slide-active', 'slide-exit-left', 'slide-exit-right');
+          }
+        }));
+      }
+
+      currentSlide = index;
+      requestAnimationFrame(() => {
+        slides.forEach(s => s.elements.forEach(el => el.classList.remove('slide-active', 'slide-exit-left', 'slide-exit-right')));
+        slides[currentSlide].elements.forEach(el => {
+          el.classList.add('slide-active');
+          el.scrollTop = 0;
+        });
+      });
+      document.querySelectorAll('.slide-dot').forEach((dot, i) => {
+        dot.classList.toggle('dot-active', i === currentSlide);
+      });
+      if (slides[currentSlide].elements.some(el => el.id === 'data')) {
+        setTimeout(animateCounters, 200);
+      }
+      const label = nextSlide.resultSubIndex !== undefined
+        ? 'results' + (nextSlide.resultSubIndex + 1)
+        : nextSlide.label;
+      history.replaceState(null, '', '#slide=' + label);
+    }
+
+    function slideNav(delta) {
+      const newIndex = currentSlide + delta;
+      if (newIndex < 0 || newIndex >= getSlides().length) return;
+      showSlide(newIndex, delta > 0 ? 'left' : 'right');
+    }
+
+    let slideZoom = 1;
+    function slideFontSize(delta) {
+      slideZoom = Math.max(0.7, Math.min(1.5, slideZoom + delta * 0.1));
+      document.querySelectorAll('main > section').forEach(el => { el.style.zoom = slideZoom; });
+      const hero = document.querySelector('section.hero');
+      const links = document.querySelector('section.links');
+      if (hero) { hero.style.transform = slideZoom === 1 ? '' : `scale(${slideZoom})`; hero.style.transformOrigin = 'center 45%'; }
+      if (links) { links.style.transform = slideZoom === 1 ? '' : `scale(${slideZoom})`; links.style.transformOrigin = 'center top'; }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!slideModeActive) return;
+      switch (e.key) {
+        case 'ArrowRight': case 'ArrowDown': case ' ':
+          e.preventDefault(); slideNav(1); break;
+        case 'ArrowLeft': case 'ArrowUp':
+          e.preventDefault(); slideNav(-1); break;
+        case 'Escape':
+          e.preventDefault(); toggleSlideMode(); break;
+        case 'Home':
+          e.preventDefault(); showSlide(0, 'right'); break;
+        case 'End':
+          e.preventDefault(); showSlide(getSlides().length - 1, 'left'); break;
+      }
+    });
+
+    if (window.location.hash.startsWith('#slide=')) {
+      window.addEventListener('DOMContentLoaded', () => {
+        const ref = window.location.hash.replace('#slide=', '');
+        toggleSlideMode();
+        const slides = getSlides();
+        const idx = ref === 'title' ? 0 : slides.findIndex(s => s.label === ref);
+        if (idx >= 0) showSlide(idx, 'none');
+      });
+    }
+
+  </script>
+</body>
+</html>
