@@ -251,6 +251,10 @@
       border-radius: 20px; border: 1px solid var(--border);
       padding: 28px 24px; box-shadow: var(--shadow-md); margin-bottom: 16px;
     }
+    /* ==================== VIDEO ==================== */
+    .video-wrapper { padding: 12px; }
+    .video-embed { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: var(--text); }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .pipeline-diagram {
       display: flex; gap: 0; align-items: stretch;
     }
@@ -683,6 +687,7 @@
       <div class="topnav-links">
         <a href="#abstract" data-section="abstract">Abstract</a>
         <a href="#data" data-section="data">Data</a>
+        <a href="#video" data-section="video">Video</a>
         <a href="#example" data-section="example">Example</a>
         <a href="#tasks" data-section="tasks">Tasks</a>
         <a href="#results" data-section="results">Results</a>
@@ -720,7 +725,7 @@
         <a href="http://arxiv.org/abs/2502.13668" class="link-btn" target="_blank"><i class="ai ai-arxiv"></i> ArXiv</a>
         <a href="https://github.com/UKPLab/PeerQA" class="link-btn" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
         <a href="https://huggingface.co/datasets/UKPLab/PeerQA" class="link-btn" target="_blank"><i class="fa-solid fa-database"></i> Dataset</a>
-        <a href="https://drive.google.com/file/d/1aZOa45OwATr38hblG5avPiWMSbg_XFB6/view" class="link-btn" target="_blank"><i class="fa-solid fa-play"></i> Video</a>
+        <a href="https://www.youtube.com/watch?v=HUUQkS7MxKM" class="link-btn" target="_blank"><i class="fa-brands fa-youtube"></i> Video</a>
         <a href="https://drive.google.com/file/d/1XKHfqxtp_B6zqOPvXKuwbMcrMblulB-m/view" class="link-btn" target="_blank"><i class="fa-solid fa-display"></i> Slides</a>
         <button class="link-btn" onclick="copyBibtex()"><i class="fa-solid fa-quote-left"></i> <span class="hero-cite-text">Cite</span></button>
       </div>
@@ -810,8 +815,21 @@
       </div>
     </section>
 
+    <!-- VIDEO -->
+    <section class="section-alt no-slide" id="video">
+      <div class="container">
+        <div class="section-label">Watch</div>
+        <h2>Video <span class="title-gradient">Overview</span></h2>
+        <div class="figure-wrapper video-wrapper">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/HUUQkS7MxKM" title="PeerQA: A Scientific Question Answering Dataset from Peer Reviews" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- EXAMPLE -->
-    <section class="section-alt" id="example">
+    <section class="section" id="example">
       <div class="container">
         <div class="section-label">Example</div>
         <h2><span class="title-gradient">PeerQA</span> Examples</h2>
@@ -851,7 +869,7 @@
     </section>
 
     <!-- TASKS -->
-    <section class="section" id="tasks">
+    <section class="section-alt" id="tasks">
       <div class="container">
         <div class="section-label">Benchmark</div>
         <h2>Three <span class="title-gradient">Tasks</span></h2>
@@ -882,7 +900,7 @@
     </section>
 
     <!-- RESULTS -->
-    <section class="section-alt" id="results">
+    <section class="section" id="results">
       <div class="container">
         <div class="section-label">Experiments</div>
         <h2><span class="title-gradient">Results</span></h2>
@@ -936,7 +954,7 @@
     </section>
 
     <!-- GET STARTED -->
-    <section class="section" id="start">
+    <section class="section-alt" id="start">
       <div class="container">
         <div class="section-label">Resources</div>
         <h2>Get <span class="title-gradient">Started</span></h2>
@@ -979,7 +997,7 @@ example = dataset[<span class="str">"train"</span>][<span class="num">0</span>]
     </section>
 
     <!-- CITATION -->
-    <section class="section-alt" id="citation">
+    <section class="section" id="citation">
       <div class="container">
         <div class="section-label">Reference</div>
         <h2><span class="title-gradient">Citation</span></h2>
@@ -1013,6 +1031,7 @@ example = dataset[<span class="str">"train"</span>][<span class="num">0</span>]
         <a href="mailto:tim.baumgaertner@tu-darmstadt.de"><i class="fa-solid fa-envelope"></i> Contact</a>
         <a href="https://github.com/UKPLab/PeerQA" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
         <a href="https://huggingface.co/datasets/UKPLab/PeerQA" target="_blank"><i class="fa-solid fa-database"></i> Dataset</a>
+        <a href="https://www.youtube.com/watch?v=HUUQkS7MxKM" target="_blank"><i class="fa-brands fa-youtube"></i> Video</a>
         <a href="https://www.ukp.tu-darmstadt.de" target="_blank"><i class="fa-solid fa-building-columns"></i> UKP Lab</a>
         <a href="https://bsky.app/profile/timbmg.bsky.social" target="_blank"><i class="fa-brands fa-bluesky"></i> @timbmg</a>
       </div>
@@ -1049,7 +1068,7 @@ example = dataset[<span class="str">"train"</span>][<span class="num">0</span>]
 
     // NAV ACTIVE SECTION
     const navLinks = document.querySelectorAll('.topnav-links a');
-    const sectionIds = ['abstract', 'data', 'example', 'tasks', 'results', 'start', 'citation'];
+    const sectionIds = ['abstract', 'data', 'video', 'example', 'tasks', 'results', 'start', 'citation'];
     const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1154,7 +1173,8 @@ example = dataset[<span class="str">"train"</span>][<span class="num">0</span>]
     function getSlides() {
       const hero = document.querySelector('section.hero');
       const links = document.querySelector('section.links');
-      const mainSections = Array.from(document.querySelectorAll('main > section'));
+      const mainSections = Array.from(document.querySelectorAll('main > section'))
+        .filter(sec => !sec.classList.contains('no-slide'));
       const slides = [{ elements: [hero, links], label: 'title' }];
       mainSections.forEach(sec => {
         if (sec.id === 'results') {
